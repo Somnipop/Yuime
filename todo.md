@@ -1,0 +1,2 @@
+- Remake and re-think Sudado library so that it becomes Yuime
+- Make actually good tests
