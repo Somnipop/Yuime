@@ -10,5 +10,3 @@
 #include "element.h"
 
 #include "elements/button.h"
-
-YUIME_API void yuime_init();
