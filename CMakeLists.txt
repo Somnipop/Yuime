@@ -1,15 +1,27 @@
 cmake_minimum_required(VERSION 3.10)
 project(Yuime LANGUAGES C)
 
-option(BUILD_SHARED_LIBS "Whether should build as a shared library or static" ON)
+set(CMAKE_RUNTIME_OUTPUT_DIRECTORY "${CMAKE_BINARY_DIR}/$<CONFIGURATION>")
+set(CMAKE_LIBRARY_OUTPUT_DIRECTORY "${CMAKE_BINARY_DIR}/$<CONFIGURATION>")
 
-file(GLOB YUIME_SOURCES ${CMAKE_CURRENT_SOURCE_DIR}/src/*.c)
+option(BUILD_SHARED_LIBS "Whether should build as a shared library or static" ON)
+option(YUIME_BUILD_ELEMENTS "Whether should include elements or not" ON)
+
+if (YUIME_BUILD_ELEMENTS)
+	file(GLOB YUIME_SOURCES ${CMAKE_CURRENT_SOURCE_DIR}/src/*.c ${CMAKE_CURRENT_SOURCE_DIR}/src/elements/*.c)
+else()
+	file(GLOB YUIME_SOURCES ${CMAKE_CURRENT_SOURCE_DIR}/src/*.c)
+endif()
 
 if (BUILD_SHARED_LIBS)
 	add_library(Yuime SHARED ${YUIME_SOURCES})
 	target_compile_definitions(Yuime PRIVATE YUIME_EXPORT=1)
 else()
 	add_library(Yuime ${YUIME_SOURCE_FILES})
+endif()
+
+if (YUIME_BUILD_ELEMENTS)
+	target_compile_definitions(Yuime PUBLIC YUIME_BUILD_ELEMENTS=1)
 endif()
 
 set_target_properties(Yuime PROPERTIES
