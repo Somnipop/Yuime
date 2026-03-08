@@ -4,9 +4,11 @@
 
 #include "API.h"
 
-typedef uint8_t(*yuime_mem_alloc_t)(void* ptr, size_t size);
-typedef uint8_t(*yuime_mem_realloc_t)(void* ptr, size_t size);
-typedef void(*yuime_mem_free_t)(void* ptr);
+// should return 0 if failed
+typedef uint8_t(*yuime_mem_alloc_t)(void** ptr, size_t size);
+// should return 0 if failed
+typedef uint8_t(*yuime_mem_realloc_t)(void** ptr, size_t current_size, size_t size);
+typedef void(*yuime_mem_free_t)(void* ptr, size_t size);
 
 typedef struct yuime_mem_functions_s {
 	yuime_mem_alloc_t alloc;
