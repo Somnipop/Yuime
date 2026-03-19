@@ -2,17 +2,18 @@
 
 #include "API.h"
 
-#include "vector2.h"
-#include "rect.h"
-#include "dimension2.h"
-#include "geometry.h"
+#include "base/vector2.h"
+#include "base/rect.h"
+#include "base/dimension2.h"
+#include "base/geometry.h"
 
-#include "context.h"
-#include "event.h"
-#include "element.h"
+#include "base/context.h"
+#include "base/event.h"
+#include "base/element.h"
 
-#include "alloc.h"
+#include "base/alloc.h"
 
-#ifdef YUIME_BUILD_ELEMENTS
+#ifndef YUIME_BUILD_BASE_ONLY
+#include "elements/type.h"
 #include "elements/button.h"
 #endif

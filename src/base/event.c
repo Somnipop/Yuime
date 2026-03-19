@@ -1,6 +1,6 @@
-#include "yuime/event.h"
+#include "yuime/base/event.h"
 
-#include "yuime/context.h"
+#include "yuime/base/context.h"
 
 void yuime_context_send_event(struct yuime_context_s* ctx, void* data) {
 	for (size_t i = 0; i < ctx->elements.count; i++) {

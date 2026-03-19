@@ -2,7 +2,7 @@
 
 #include <stdint.h>
 
-#include "API.h"
+#include "../API.h"
 
 // should return 0 if failed
 typedef uint8_t(*yuime_mem_alloc_t)(void** ptr, size_t size);

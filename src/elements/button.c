@@ -1,10 +1,11 @@
 #include "yuime/elements/button.h"
 
-#include "yuime/dimension2.h"
+#include "yuime/base/dimension2.h"
+#include "yuime/elements/type.h"
 
 #include <string.h>
 
-uint8_t yuime_element_button_init(yuime_context* ctx, uint32_t element_type, yuime_element_button* button, yuime_geometry geometry) {
+uint8_t yuime_element_button_init(yuime_context* ctx, yuime_element_button* button, yuime_geometry geometry, yuime_element_flag_t element_flags) {
 	if (ctx == NULL || button == NULL) {
 		return 0;
 	}
@@ -23,12 +24,13 @@ uint8_t yuime_element_button_init(yuime_context* ctx, uint32_t element_type, yui
 		.offset = {0.0f, 0.0f}
 	};
 
-	button->base = yuime_context_element_add(ctx, (yuime_element){
-		.rect = (yuime_rect){0.0f, 0.0f, 0.0f, 0.0f},
-		.event_callback = NULL,
-		.type = element_type,
+	yuime_element element;
+	yuime_element_init(&element, NULL, (yuime_element_object){
+		.type = YUIME_ELEMENT_TYPE_BUTTON,
 		.obj = &button
-	});
+	}, YUIME_ELEMENT_FLAG_NONE);
+
+	button->base = yuime_context_element_add(ctx, &element);
 	
 
 	// TODO: call on window resize

@@ -2,7 +2,7 @@
 
 #include <stdint.h>
 
-#include "API.h"
+#include "../API.h"
 
 struct yuime_context_s;
 struct yuime_element_s;

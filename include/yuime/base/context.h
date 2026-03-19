@@ -18,7 +18,7 @@ YUIME_API void yuime_context_init(yuime_context* ctx, yuime_mem_functions mem_fu
 /**
  * @brief Adds an element to ctx->elements
  * @param ctx Context to add element to.
- * @param element Memory address of the element to add.
+ * @param element Memory address of the element to be copied and added.
  * @returns NULL if failed.
  */
-YUIME_API yuime_element* yuime_context_element_add(yuime_context* ctx, yuime_element element);
+YUIME_API yuime_element* yuime_context_element_add(yuime_context* ctx, const yuime_element* element);

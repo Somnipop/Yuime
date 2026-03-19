@@ -5,12 +5,16 @@ set(CMAKE_RUNTIME_OUTPUT_DIRECTORY "${CMAKE_BINARY_DIR}/$<CONFIGURATION>")
 set(CMAKE_LIBRARY_OUTPUT_DIRECTORY "${CMAKE_BINARY_DIR}/$<CONFIGURATION>")
 
 option(BUILD_SHARED_LIBS "Whether should build as a shared library or static" ON)
-option(YUIME_BUILD_ELEMENTS "Whether should include elements or not" ON)
+option(YUIME_BUILD_BASE_ONLY "Whether should build only the base or not" OFF)
 
-if (YUIME_BUILD_ELEMENTS)
-	file(GLOB YUIME_SOURCES ${CMAKE_CURRENT_SOURCE_DIR}/src/*.c ${CMAKE_CURRENT_SOURCE_DIR}/src/elements/*.c)
+if (YUIME_BUILD_BASE_ONLY)
+	file(GLOB YUIME_SOURCES ${CMAKE_CURRENT_SOURCE_DIR}/src/base/*.c)
 else()
-	file(GLOB YUIME_SOURCES ${CMAKE_CURRENT_SOURCE_DIR}/src/*.c)
+	file(GLOB YUIME_SOURCES
+		${CMAKE_CURRENT_SOURCE_DIR}/src/base/*.c
+		${CMAKE_CURRENT_SOURCE_DIR}/src/*.c
+		${CMAKE_CURRENT_SOURCE_DIR}/src/elements/*.c
+	)
 endif()
 
 if (BUILD_SHARED_LIBS)
@@ -20,8 +24,8 @@ else()
 	add_library(Yuime ${YUIME_SOURCE_FILES})
 endif()
 
-if (YUIME_BUILD_ELEMENTS)
-	target_compile_definitions(Yuime PUBLIC YUIME_BUILD_ELEMENTS=1)
+if (YUIME_BUILD_BASE_ONLY)
+	target_compile_definitions(Yuime PUBLIC YUIME_BUILD_BASE_ONLY=1)
 endif()
 
 set_target_properties(Yuime PROPERTIES

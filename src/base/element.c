@@ -1,6 +1,16 @@
-#include "yuime/element.h"
+#include "yuime/base/element.h"
 
 #include <stdlib.h>
+#include <string.h>
+
+void yuime_element_init(yuime_element* element, yuime_event_callback_t event_callback, yuime_element_object self, uint8_t flags) {
+	memset(element, 0, sizeof(yuime_element));
+
+	element->event_callback = event_callback;
+	element->self = self;
+	element->flags = flags;
+}
+
 
 uint8_t yuime_element_array_init(yuime_mem_functions* mem_funcs, yuime_element_array *array, yuime_element_array_index_t initial_capacity) {
 	array->count = 0;
