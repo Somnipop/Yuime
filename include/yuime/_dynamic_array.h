@@ -57,7 +57,7 @@ type* function_name_prefix##get(const name *array, array_size_t index) { \
 	return array->data+index; \
 } \
 void function_name_prefix##pop(name *array, array_size_t index) { \
-	for (array_size_t i = index; i < array->count; ++i) { \
+	for (array_size_t i = index; i+1 < array->count; ++i) { \
 		array->data[i] = array->data[i+1]; \
 	} \
 	array->count--; \
