@@ -3,6 +3,7 @@
 #include <stdio.h>
 
 #include "mem_alloc.h"
+#include "render.h"
 
 int init(yuime_context* ctx, SDL_Window** window, SDL_Renderer** renderer) {
 	if (!SDL_Init(SDL_INIT_VIDEO|SDL_INIT_GAMEPAD)) {
@@ -24,10 +25,16 @@ int init(yuime_context* ctx, SDL_Window** window, SDL_Renderer** renderer) {
 
 	yuime_context_init(
 		ctx,
-		(yuime_mem_functions){
+		(yuime_memory_functions){
 			mem_alloc,
 			mem_realloc,
 			mem_free
+		},
+
+		// TODO: instead of calling render_element every element render call, make yuime return a list of elements to be drawn to the screen.
+		(yuime_render_callback){
+			.data = renderer,
+			.element = render_element
 		}
 	);
 

@@ -1,0 +1,18 @@
+#pragma once
+
+#include <stdint.h>
+
+typedef uint8_t yuime_resize_region_t;
+typedef enum yuime_resize_region_e {
+	YUIME_RESIZE_REGION_NONE = 0,
+	YUIME_RESIZE_REGION_TOP = 1,
+	YUIME_RESIZE_REGION_BOTTOM = 2,
+	YUIME_RESIZE_REGION_LEFT = 4,
+	YUIME_RESIZE_REGION_RIGHT = 8,
+	YUIME_RESIZE_REGION_COUNT
+} yuime_resize_region;
+
+#define YUIME_RESIZE_REGION_TOPLEFT(region) ((region & YUIME_RESIZE_REGION_TOP) & (region & YUIME_RESIZE_REGION_LEFT))
+#define YUIME_RESIZE_REGION_TOPRIGHT(region) ((region & YUIME_RESIZE_REGION_TOP) & (region & YUIME_RESIZE_REGION_RIGHT))
+#define YUIME_RESIZE_REGION_BOTTOMLEFT(region) ((region & YUIME_RESIZE_REGION_BOTTOM) & (region & YUIME_RESIZE_REGION_LEFT))
+#define YUIME_RESIZE_REGION_BOTTOMRIGHT(region) ((region & YUIME_RESIZE_REGION_BOTTOM) & (region & YUIME_RESIZE_REGION_RIGHT))

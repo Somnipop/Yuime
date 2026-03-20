@@ -5,7 +5,7 @@
 
 #include <string.h>
 
-uint8_t yuime_element_button_init(yuime_context* ctx, yuime_element_button* button, yuime_geometry geometry, yuime_element_flag_t element_flags) {
+uint8_t yuime_element_button_init(yuime_context *ctx, yuime_element_button *button, yuime_geometry geometry, yuime_element_flag_t element_flags) {
 	if (ctx == NULL || button == NULL) {
 		return 0;
 	}
