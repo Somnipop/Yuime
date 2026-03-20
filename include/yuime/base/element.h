@@ -21,10 +21,14 @@ typedef struct yuime_element_object_s {
 	void *obj; ///< Object
 } yuime_element_object;
 
+struct yuime_element_s;
+typedef void(*yuime_element_free_callback_t)(struct yuime_element_s* element);
+
 typedef struct yuime_element_s {
 	yuime_rect rect;
 
 	yuime_event_callback_t event_callback; ///< Function to be called when yuime_context_send_event() is called.
+	yuime_element_free_callback_t free;
 
 	yuime_element_object self;
 	struct yuime_element_s *parent;

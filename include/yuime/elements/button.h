@@ -7,7 +7,7 @@
 #include "../base/context.h"
 
 typedef struct yuime_element_button_s {
-	yuime_element *base;
+	yuime_element base;
 
 	yuime_dim2 min_size;
 	yuime_dim2 max_size;

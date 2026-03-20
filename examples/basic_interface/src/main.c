@@ -6,6 +6,7 @@
 #include <yuime/yuime.h>
 
 #include "init.h"
+#include "mem_alloc.h"
 
 int main() {
 	SDL_Window* window = NULL;
@@ -15,7 +16,7 @@ int main() {
 	init(&ctx, &window, &renderer);
 
 	yuime_dim2 size = {
-		.scale = {0.5f, 0.5f},
+		.scale = {0.33f, 0.33f},
 		.offset = {0.0f, 0.0f}
 	};
 
@@ -29,23 +30,54 @@ int main() {
 	// 				.size = &size
 	// 		}, YUIME_ELEMENT_FLAG_NONE);
 
-	yuime_element_button btn;
-	yuime_element_button_init(&ctx, &btn, (yuime_geometry){
-				.pivot = {0.5f, 0.5f},
+	yuime_element_button btn[3];
+
+	// TOP LEFT
+	yuime_element_button_init(&ctx, &btn[0], (yuime_geometry){
+				.pivot = {0.0f, 0.0f},
 				.position = {
-					.scale = {0.5f, 0.5f},
+					.scale = {0.0f, 0.0f},
 					.offset = {0.0f, 0.0f}
 				},
 				.size = &size
 		}, YUIME_ELEMENT_FLAG_NONE
 	);
-	yuime_set_visibility(&ctx.memory, btn.base, 1);
 
-	btn.base->rect.w = yuime_dim2_calculate_size(800.0f, btn.geometry.position.scale.x, btn.geometry.position.offset.x);
-	btn.base->rect.h = yuime_dim2_calculate_size(600.0f, btn.geometry.position.scale.y, btn.geometry.position.offset.y);
+	// TOP CENTER
+	yuime_element_button_init(&ctx, &btn[1], (yuime_geometry){
+				.pivot = {0.5f, 0.0f},
+				.position = {
+					.scale = {0.5f, 0.0f},
+					.offset = {0.0f, 0.0f}
+				},
+				.size = &size
+		}, YUIME_ELEMENT_FLAG_NONE
+	);
 
-	btn.base->rect.x = yuime_dim2_calculate_position(0.0f, 800.0f, btn.base->rect.w, btn.geometry.size->scale.x, btn.geometry.size->offset.x, btn.geometry.pivot.x);
-	btn.base->rect.y = yuime_dim2_calculate_position(0.0f, 600.0f, btn.base->rect.h, btn.geometry.size->scale.y, btn.geometry.size->offset.y, btn.geometry.pivot.y);
+	// TOP RIGHT
+	yuime_element_button_init(&ctx, &btn[2], (yuime_geometry){
+				.pivot = {1.0f, 0.0f},
+				.position = {
+					.scale = {1.0f, 0.0f},
+					.offset = {0.0f, 0.0f}
+				},
+				.size = &size
+		}, YUIME_ELEMENT_FLAG_NONE
+	);
+
+	{
+		yuime_rect screen_rect = {
+			.x = 0.0f,
+			.y = 0.0f,
+			.w = 800.0f,
+			.h = 600.0f
+		};
+	
+		for (uint8_t i = 0; i < sizeof(btn)/sizeof(btn[0]); ++i) {
+			yuime_set_visibility(&ctx.memory, &btn[i].base, 1);
+			yuime_geometry_calculate_rect(&btn[i].geometry, &screen_rect, &btn[i].base.rect);
+		}
+	}
 
 	SDL_Event event;
 	uint8_t running = 1;
@@ -76,5 +108,8 @@ int main() {
 
 	yuime_context_cleanup(&ctx);
 
+#ifndef NDEBUG
+	mem_print_stats();
+#endif // !NDEBUG
 	return 0;
 }

@@ -3,7 +3,7 @@
 #include <stdint.h>
 
 #include "alloc.h"
-#include "element_array.h"
+#include "element_pointer_array.h"
 #include "element.h"
 #include "render.h"
 #include "resize_region.h"
@@ -27,7 +27,7 @@ typedef struct yuime_context_s {
 	yuime_memory_functions memory;
 	yuime_render_callback render;
 
-	yuime_element_array elements;
+	yuime_element_pointer_array elements;
 
 	yuime_element *focused_element;
 	yuime_element *hovered_element;
@@ -49,9 +49,9 @@ YUIME_API void yuime_context_init(yuime_context *ctx, yuime_memory_functions mem
 YUIME_API void yuime_context_cleanup(yuime_context *ctx);
 
 /**
- * @brief Adds an element to ctx->elements
+ * @brief Adds an element to ctx->elements.
  * @param ctx Context to add element to.
- * @param element Memory address of the element to be copied and added.
- * @returns NULL if failed.
+ * @param element Memory address of the element to be added to elements array.
+ * @returns 0 if failed
  */
-YUIME_API yuime_element *yuime_context_element_add(yuime_context *ctx, const yuime_element *element);
+YUIME_API uint8_t yuime_context_element_add(yuime_context *ctx, yuime_element *element);

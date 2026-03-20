@@ -11,19 +11,23 @@ void yuime_context_init(yuime_context *ctx, yuime_memory_functions mem_functions
 	ctx->memory = mem_functions;
 	ctx->render = render;
 
-	yuime_element_array_init(&ctx->memory, &ctx->elements, 0);
+	yuime_element_pointer_array_init(&ctx->memory, &ctx->elements, 0);
 }
 
 void yuime_context_cleanup(yuime_context *ctx) {
 	if (ctx == NULL)
 		return;
 
-	yuime_element_array_free(&ctx->memory, &ctx->elements);
+	for (yuime_element_pointer_array_index_t i = 0; i < ctx->elements.count; i++) {
+		if (ctx->elements.data[i]->free) {
+			ctx->elements.data[i]->free(ctx->elements.data[i]);
+		}
+	}
+
+	yuime_element_pointer_array_free(&ctx->memory, &ctx->elements);
 	memset(ctx, 0, sizeof(yuime_context));
 }
 
-yuime_element *yuime_context_element_add(yuime_context *ctx, const yuime_element *element) {
-	yuime_element_array_push(&ctx->memory, &ctx->elements, element);
-	// No need to check if push succeeded before because get already checks if index and data are valid.
-	return yuime_element_array_get(&ctx->elements, ctx->elements.count-1);
+uint8_t yuime_context_element_add(yuime_context *ctx, yuime_element *element) {
+	return yuime_element_pointer_array_push(&ctx->memory, &ctx->elements, element);
 }

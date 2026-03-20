@@ -24,15 +24,14 @@ uint8_t yuime_element_button_init(yuime_context *ctx, yuime_element_button *butt
 		.offset = {0.0f, 0.0f}
 	};
 
-	yuime_element element;
-	yuime_element_init(&element, NULL, (yuime_element_object){
+	yuime_element_init(&button->base, NULL, (yuime_element_object){
 		.type = YUIME_ELEMENT_TYPE_BUTTON,
 		.obj = &button
 	}, element_flags);
 
-	button->base = yuime_context_element_add(ctx, &element);
-	if (button->base == NULL)
+	if (!yuime_context_element_add(ctx, &button->base)) {
 		return 0;
+	}
 
 	// TODO: call on window resize
 
