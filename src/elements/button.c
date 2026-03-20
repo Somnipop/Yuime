@@ -28,10 +28,9 @@ uint8_t yuime_element_button_init(yuime_context *ctx, yuime_element_button *butt
 	yuime_element_init(&element, NULL, (yuime_element_object){
 		.type = YUIME_ELEMENT_TYPE_BUTTON,
 		.obj = &button
-	}, YUIME_ELEMENT_FLAG_NONE);
+	}, YUIME_ELEMENT_FLAG_VISIBLE);
 
 	button->base = yuime_context_element_add(ctx, &element);
-	
 
 	// TODO: call on window resize
 
