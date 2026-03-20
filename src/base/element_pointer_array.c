@@ -7,7 +7,7 @@ uint8_t yuime_element_pointer_array_init(const yuime_memory_functions *mem_funcs
 	if (initial_capacity == 0) {
 		array->data = NULL;
 
-	} else if (!mem_funcs->alloc(&array->data, initial_capacity * sizeof(yuime_element*)))
+	} else if (!mem_funcs->alloc((void**)&array->data, initial_capacity * sizeof(yuime_element*)))
 		return 0;
 
 	array->capacity = initial_capacity;
@@ -17,9 +17,9 @@ uint8_t yuime_element_pointer_array_init(const yuime_memory_functions *mem_funcs
 uint8_t yuime_element_pointer_array_push(const yuime_memory_functions *mem_funcs, yuime_element_pointer_array *array, yuime_element *value) {
 	if (array->count == array->capacity) {
 		if (array->data == NULL) {
-			if (!mem_funcs->alloc(&array->data, (array->capacity+1) * sizeof(yuime_element*)))
+			if (!mem_funcs->alloc((void**)&array->data, (array->capacity+1) * sizeof(yuime_element*)))
 				return 0;
-		} else if (!mem_funcs->realloc(&array->data, array->capacity * sizeof(yuime_element*), (array->capacity+1) * sizeof(yuime_element*)))
+		} else if (!mem_funcs->realloc((void**)&array->data, array->capacity * sizeof(yuime_element*), (array->capacity+1) * sizeof(yuime_element*)))
 			return 0;
 		array->capacity++;
 	}
@@ -52,7 +52,7 @@ void yuime_element_pointer_array_pop(yuime_element_pointer_array *array, yuime_e
 }
 
 uint8_t yuime_element_pointer_array_reserve(const yuime_memory_functions *mem_funcs, yuime_element_pointer_array *array, yuime_element_pointer_array_index_t to_reserve) {
-	if (!mem_funcs->realloc(&array->data, array->capacity * sizeof(yuime_element*), (array->capacity+to_reserve) * sizeof(yuime_element*)))
+	if (!mem_funcs->realloc((void**)&array->data, array->capacity * sizeof(yuime_element*), (array->capacity+to_reserve) * sizeof(yuime_element*)))
 		return 0;
 
 	array->capacity += to_reserve;
@@ -68,7 +68,7 @@ uint8_t yuime_element_pointer_array_fit_capacity_to_size(const yuime_memory_func
 		return 1;
 	}
 
-	if (!mem_funcs->realloc(&array->data, array->capacity * sizeof(yuime_element*), array->count * sizeof(yuime_element*))) {
+	if (!mem_funcs->realloc((void**)&array->data, array->capacity * sizeof(yuime_element*), array->count * sizeof(yuime_element*))) {
 		return 0;
 	}
 

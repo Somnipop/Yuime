@@ -7,6 +7,10 @@ typedef struct yuime_dim2_s {
 	yuime_vector2 offset; ///< Absolute (pixel).
 } yuime_dim2;
 
-#define YUIME_CALC_DIM2_SIZE(parent_size, scale, offset) (parent_size * scale + offset)
-#define YUIME_CALC_DIM2_POSITION(parent_pos, parent_size, element_size, scale, offset, pivot) \
-	(parent_pos + parent_size * scale + offset - element_size * pivot)
+inline float yuime_dim2_calculate_size(float parent_size, float scale, float offset) {
+	return (parent_size * scale) + offset;
+}
+
+inline float yuime_dim2_calculate_position(float parent_position, float parent_size, float size, float scale, float offset, float pivot) {
+	return parent_position + (parent_size * scale) + offset - (size * pivot);
+}

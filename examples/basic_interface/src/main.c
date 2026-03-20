@@ -29,31 +29,24 @@ int main() {
 	// 				.size = &size
 	// 		}, YUIME_ELEMENT_FLAG_NONE);
 
-	yuime_element_button btns[4];
-	for (int i = 0; i < 4; ++i) {
-		yuime_element_button_init(&ctx, &btns[i], (yuime_geometry){
-						.pivot = {0.5f, 0.5f},
-						.position = {
-							.scale = {0.5f, 0.5f},
-							.offset = {0.0f, 0.0f}
-						},
-						.size = &size
-				}, YUIME_ELEMENT_FLAG_NONE);
-		if (i > 0) {
-			btns[i].base->parent = btns[i-1].base;
+	yuime_element_button btn;
+	yuime_element_button_init(&ctx, &btn, (yuime_geometry){
+				.pivot = {0.5f, 0.5f},
+				.position = {
+					.scale = {0.5f, 0.5f},
+					.offset = {0.0f, 0.0f}
+				},
+				.size = &size
+		}, YUIME_ELEMENT_FLAG_NONE
+	);
+	yuime_set_visibility(&ctx.memory, btn.base, 1);
 
-			if (btns[i].base->parent->children.data == NULL) {
-				yuime_element_pointer_array_init(&ctx.memory, &btns[i].base->parent->children, 1);
-			}
-			yuime_element_pointer_array_push(&ctx.memory, &btns[i].base->parent->children, btns[i].base);
-		}
-	}
+	btn.base->rect.w = yuime_dim2_calculate_size(800.0f, btn.geometry.position.scale.x, btn.geometry.position.offset.x);
+	btn.base->rect.h = yuime_dim2_calculate_size(600.0f, btn.geometry.position.scale.y, btn.geometry.position.offset.y);
 
-	// yuime_set_visibility(&ctx.memory, btns[3].base, 1);
-	// yuime_set_visibility(&ctx.memory, btns[2].base, 1);
-	// yuime_set_visibility(&ctx.memory, btns[1].base, 1);
-	yuime_set_visibility(&ctx.memory, btns[0].base, 1);
-	return;
+	btn.base->rect.x = yuime_dim2_calculate_position(0.0f, 800.0f, btn.base->rect.w, btn.geometry.size->scale.x, btn.geometry.size->offset.x, btn.geometry.pivot.x);
+	btn.base->rect.y = yuime_dim2_calculate_position(0.0f, 600.0f, btn.base->rect.h, btn.geometry.size->scale.y, btn.geometry.size->offset.y, btn.geometry.pivot.y);
+
 	SDL_Event event;
 	uint8_t running = 1;
 	while (running) {
@@ -65,8 +58,12 @@ int main() {
 			}
 		}
 
+		yuime_update(&ctx);
+
 		SDL_SetRenderDrawColor(renderer, 240, 240, 240, 255);
 		SDL_RenderClear(renderer);
+
+		yuime_render(&ctx);
 
 		SDL_RenderPresent(renderer);
 	}
@@ -76,6 +73,8 @@ int main() {
 
 	SDL_DestroyWindow(window);
 	window = NULL;
+
+	yuime_context_cleanup(&ctx);
 
 	return 0;
 }

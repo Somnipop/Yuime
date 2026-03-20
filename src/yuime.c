@@ -60,13 +60,10 @@ void yuime_update(yuime_context *ctx) {
 		if e and e.update then e:update() end
 	end
 	*/
-	for (yuime_element_array_index_t i = 0; i < ctx->elements.count; ++i) {
-		if (ctx->elements.data[i].flags | YUIME_ELEMENT_FLAG_VISIBLE)
-		ctx->render.element(ctx, &ctx->elements.data[i], ctx->render.data);
-	}
+	return;
 }
 
-void yuime_draw(yuime_context *ctx) {
+void yuime_render(yuime_context *ctx) {
 	for (yuime_element_array_index_t i = 0; i < ctx->elements.count; ++i) {
 		if (ctx->elements.data[i].flags & YUIME_ELEMENT_FLAG_PARENT_RELATED_VISIBLE) {
 			ctx->render.element(ctx, &ctx->elements.data[i], ctx->render.data);

@@ -14,6 +14,14 @@ void yuime_context_init(yuime_context *ctx, yuime_memory_functions mem_functions
 	yuime_element_array_init(&ctx->memory, &ctx->elements, 0);
 }
 
+void yuime_context_cleanup(yuime_context *ctx) {
+	if (ctx == NULL)
+		return;
+
+	yuime_element_array_free(&ctx->memory, &ctx->elements);
+	memset(ctx, 0, sizeof(yuime_context));
+}
+
 yuime_element *yuime_context_element_add(yuime_context *ctx, const yuime_element *element) {
 	yuime_element_array_push(&ctx->memory, &ctx->elements, element);
 	// No need to check if push succeeded before because get already checks if index and data are valid.

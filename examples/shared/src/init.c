@@ -33,7 +33,7 @@ int init(yuime_context* ctx, SDL_Window** window, SDL_Renderer** renderer) {
 
 		// TODO: instead of calling render_element every element render call, make yuime return a list of elements to be drawn to the screen.
 		(yuime_render_callback){
-			.data = renderer,
+			.data = *renderer,
 			.element = render_element
 		}
 	);

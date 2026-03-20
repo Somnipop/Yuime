@@ -31,4 +31,4 @@
 YUIME_API void yuime_set_visibility(const yuime_memory_functions *mem_funcs, yuime_element *element, uint8_t visible);
 
 YUIME_API void yuime_update(yuime_context *ctx);
-YUIME_API void yuime_draw(yuime_context *ctx);
+YUIME_API void yuime_render(yuime_context *ctx);

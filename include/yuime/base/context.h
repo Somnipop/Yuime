@@ -46,6 +46,8 @@ typedef struct yuime_context_s {
  */
 YUIME_API void yuime_context_init(yuime_context *ctx, yuime_memory_functions mem_functions, yuime_render_callback render);
 
+YUIME_API void yuime_context_cleanup(yuime_context *ctx);
+
 /**
  * @brief Adds an element to ctx->elements
  * @param ctx Context to add element to.
