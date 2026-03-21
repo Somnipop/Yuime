@@ -1,3 +1,3 @@
-- Make layout calculation tests: what is expected when configuring in a specific way
 - Get OS settings such as caret blink time. If any setting is not found in the user system, make use of a custom one modifiable by the user
 - Use arrays to cache elements instead of looping all of the existing elements in functions such as yuime_update and yuime_draw
+- Make two kinds of events: the ones that the window and renderer will handle(window resize, input, etc) and the ones yuime has total control(element resize, children update, etc)
