@@ -7,4 +7,4 @@ typedef void(*yuime_render_element_callback_t)(struct yuime_context_s *ctx, stru
 typedef struct yuime_render_callback_s {
 	yuime_render_element_callback_t element;
 	void *data;
-} yuime_render_callback;
+} yuime_render_callback_t;

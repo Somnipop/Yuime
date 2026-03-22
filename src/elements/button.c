@@ -1,38 +1,41 @@
 #include "yuime/elements/button.h"
 
-#include "yuime/base/dimension2.h"
+#include "yuime/base/math/dimension2.h"
 #include "yuime/elements/type.h"
 
 #include <string.h>
 
-uint8_t yuime_element_button_init(yuime_context *ctx, yuime_element_button *button, yuime_geometry geometry, yuime_element_flag_t element_flags) {
+uint8_t yuime_element_button_init(yuime_context_t *ctx, yuime_element_button_t *button, yuime_geometry_t geometry, yuime_element_event_callback_t event_callback, yuime_element_flag_t element_flags) {
 	if (ctx == NULL || button == NULL) {
 		return 0;
 	}
 
-	memset(button, 0, sizeof(yuime_element_button));
+	memset(button, 0, sizeof(yuime_element_button_t));
 
 	button->geometry = geometry;
 
-	button->min_size = (yuime_dim2){
+	button->min_size = (yuime_dim2_t){
 		.scale = {0.0f, 0.0f},
 		.offset = {1.0f, 1.0f}
 	};
 
-	button->max_size = (yuime_dim2){
+	button->max_size = (yuime_dim2_t){
 		.scale = {1.0f, 1.0f},
 		.offset = {0.0f, 0.0f}
 	};
 
-	yuime_element_init(&button->base, NULL, (yuime_element_object){
+	yuime_element_init(&button->base, event_callback, (yuime_element_object){
 		.type = YUIME_ELEMENT_TYPE_BUTTON,
-		.obj = &button
+		.obj = button
 	}, element_flags);
 
 	if (!yuime_context_element_add(ctx, &button->base)) {
 		return 0;
 	}
 
+	if (button->base.event_callback) {
+		button->base.event_callback(ctx, &button->base, YUIME_EVENT_RESIZE, NULL);
+	}
 	// TODO: call on window resize
 
 	return 1;

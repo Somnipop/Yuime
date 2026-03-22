@@ -1,8 +1,8 @@
 #pragma once
 
-#include "../API.h"
+#include "../../API.h"
 
-#include "alloc.h"
+#include "../alloc.h"
 
 struct yuime_element_s;
 
@@ -22,9 +22,9 @@ typedef struct yuime_element_array_s {
  * 
  * @returns 0 if failed to allocate initial capacity.
  */
-YUIME_API uint8_t yuime_element_array_init(const yuime_memory_functions *mem_funcs, yuime_element_array *array, yuime_element_array_index_t initial_capacity);
+YUIME_API uint8_t yuime_element_array_init(const yuime_memory_functions_t *mem_funcs, yuime_element_array *array, yuime_element_array_index_t initial_capacity);
 
-YUIME_API void yuime_element_array_free(const yuime_memory_functions *mem_funcs, yuime_element_array *array);
+YUIME_API void yuime_element_array_free(const yuime_memory_functions_t *mem_funcs, yuime_element_array *array);
 
 /**
  * @brief Copies an element to the array.
@@ -35,7 +35,7 @@ YUIME_API void yuime_element_array_free(const yuime_memory_functions *mem_funcs,
  * 
  * @returns 0 if failed to allocate/reallocate.
  */
-YUIME_API uint8_t yuime_element_array_push(const yuime_memory_functions *mem_funcs, yuime_element_array *array, const struct yuime_element_s *value);
+YUIME_API uint8_t yuime_element_array_push(const yuime_memory_functions_t *mem_funcs, yuime_element_array *array, const struct yuime_element_s *value);
 
 /**
  * @brief Gets an element from array at index.
@@ -63,7 +63,7 @@ YUIME_API void yuime_element_array_pop(yuime_element_array *array, yuime_element
  * @param to_reserve 
  * @returns 0 if failed to reallocate.
  */
-YUIME_API uint8_t yuime_element_array_reserve(const yuime_memory_functions *mem_funcs, yuime_element_array *array, yuime_element_array_index_t to_reserve);
+YUIME_API uint8_t yuime_element_array_reserve(const yuime_memory_functions_t *mem_funcs, yuime_element_array *array, yuime_element_array_index_t to_reserve);
 
 /**
  * @brief 
@@ -72,4 +72,4 @@ YUIME_API uint8_t yuime_element_array_reserve(const yuime_memory_functions *mem_
  * @param array 
  * @returns 0 if failed to reallocate
  */
-YUIME_API uint8_t yuime_element_array_fit_capacity_to_size(const yuime_memory_functions *mem_funcs, yuime_element_array *array);
+YUIME_API uint8_t yuime_element_array_fit_capacity_to_size(const yuime_memory_functions_t *mem_funcs, yuime_element_array *array);

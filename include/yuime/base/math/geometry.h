@@ -1,6 +1,6 @@
 #pragma once
 
-#include "../API.h"
+#include "../../API.h"
 
 #include "vector2.h"
 #include "dimension2.h"
@@ -10,12 +10,12 @@
  * @brief Rectangle geometry.
  */
 typedef struct yuime_geometry_s {
-	yuime_vector2 pivot; ///< Origin of the geometry.
-	yuime_dim2 position;
-	yuime_dim2* size; ///< Pointer to size. Why? Because size could be shared with other geometries.
-} yuime_geometry;
+	yuime_vector2_t pivot; ///< Origin of the geometry.
+	yuime_dim2_t position;
+	yuime_dim2_t* size; ///< Pointer to size. Why? Because size could be shared with other geometries.
+} yuime_geometry_t;
 
-inline void yuime_geometry_calculate_rect(const yuime_geometry* geometry, const yuime_rect *parent_rect, yuime_rect *rect) {
+inline void yuime_geometry_calculate_rect(const yuime_geometry_t *geometry, const yuime_rect_t *parent_rect, yuime_rect_t *rect) {
 	rect->w = yuime_dim2_calculate_size(parent_rect->w, geometry->size->scale.x, geometry->size->offset.x);
 	rect->h = yuime_dim2_calculate_size(parent_rect->h, geometry->size->scale.y, geometry->size->offset.y);
 

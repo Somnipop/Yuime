@@ -1,10 +1,10 @@
 #include "yuime/util.h"
 
-#include "yuime/base/element.h"
+#include "yuime/base/element/element.h"
 
 typedef uint16_t _yuime_element_children_node_index_t;
 typedef struct _yuime_children_node_s {
-	yuime_element_pointer_array *children;
+	yuime_element_pointer_array_t *children;
 	yuime_element_pointer_array_index_t index;
 } _yuime_children_node;
 
@@ -14,7 +14,7 @@ typedef struct _yuime_children_tree_s {
 	_yuime_children_node *nodes;
 } _yuime_children_tree;
 
-uint8_t _yuime_children_tree_init(const yuime_memory_functions *mem_funcs, _yuime_children_tree *array, yuime_element_pointer_array_index_t initial_capacity) {
+uint8_t _yuime_children_tree_init(const yuime_memory_functions_t *mem_funcs, _yuime_children_tree *array, yuime_element_pointer_array_index_t initial_capacity) {
 	array->count = 0;
 	if (initial_capacity == 0)
 		array->nodes = ((void *)0);
@@ -24,7 +24,7 @@ uint8_t _yuime_children_tree_init(const yuime_memory_functions *mem_funcs, _yuim
 	return 1;
 }
 
-uint8_t _yuime_children_tree_push(const yuime_memory_functions *mem_funcs, _yuime_children_tree *array, const _yuime_children_node *value) {
+uint8_t _yuime_children_tree_push(const yuime_memory_functions_t *mem_funcs, _yuime_children_tree *array, const _yuime_children_node *value) {
 	if (array->count == array->capacity) {
 		if (array->nodes == ((void *)0)) {
 			if (!mem_funcs->alloc(&array->nodes, (array->capacity + 1) * sizeof(_yuime_children_node)))
@@ -39,7 +39,7 @@ uint8_t _yuime_children_tree_push(const yuime_memory_functions *mem_funcs, _yuim
 	return 1;
 }
 
-void _yuime_children_tree_free(const yuime_memory_functions *mem_funcs, _yuime_children_tree *array) {
+void _yuime_children_tree_free(const yuime_memory_functions_t *mem_funcs, _yuime_children_tree *array) {
 	if (array->nodes == ((void *)0))
 		return;
 	mem_funcs->free(array->nodes, array->capacity * sizeof(_yuime_children_node));
@@ -60,14 +60,14 @@ void _yuime_children_tree_pop(_yuime_children_tree *array, yuime_element_pointer
 	array->count--;
 }
 
-uint8_t _yuime_children_tree_reserve(yuime_memory_functions *mem_funcs, _yuime_children_tree *array, yuime_element_pointer_array_index_t to_reserve) {
+uint8_t _yuime_children_tree_reserve(yuime_memory_functions_t *mem_funcs, _yuime_children_tree *array, yuime_element_pointer_array_index_t to_reserve) {
 	if (!mem_funcs->realloc(&array->nodes, array->capacity * sizeof(_yuime_children_node), (array->capacity + to_reserve) * sizeof(_yuime_children_node)))
 		return 0;
 	array->capacity += to_reserve;
 	return 1;
 }
 
-void _yuime_children_tree_fit_capacity_to_size(yuime_memory_functions *mem_funcs, _yuime_children_tree *array) {
+void _yuime_children_tree_fit_capacity_to_size(yuime_memory_functions_t *mem_funcs, _yuime_children_tree *array) {
 	if (array->capacity == array->count)
 		return;
 	if (array->count == 0) {
@@ -79,7 +79,7 @@ void _yuime_children_tree_fit_capacity_to_size(yuime_memory_functions *mem_funcs
 }
 
 
-void yuime_element_children_iterate(const yuime_memory_functions *mem_funcs, yuime_element_pointer_array *children, yuime_element_children_iterate_callback_t callback, void *data) {
+void yuime_element_children_iterate(const yuime_memory_functions_t *mem_funcs, yuime_element_pointer_array_t *children, yuime_element_children_iterate_callback_t callback, void *data) {
 	if (children == NULL || callback == NULL) {
 		return;
 	}

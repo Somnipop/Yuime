@@ -5,13 +5,13 @@
 #include "mem_alloc.h"
 #include "render.h"
 
-int init(yuime_context* ctx, SDL_Window** window, SDL_Renderer** renderer) {
+int init(const yuime_vector2_t screen_size, yuime_context_t* ctx, SDL_Window** window, SDL_Renderer** renderer) {
 	if (!SDL_Init(SDL_INIT_VIDEO|SDL_INIT_GAMEPAD)) {
 		printf("Failed to initialize SDL\n");
 		return 1;
 	}
 
-	*window = SDL_CreateWindow("basic_interface", 800, 600, SDL_WINDOW_RESIZABLE);
+	*window = SDL_CreateWindow("basic_interface", (int)screen_size.x, (int)screen_size.y, SDL_WINDOW_RESIZABLE);
 	if (!(*window)) {
 		printf("Failed to create window\n");
 		return 1;
@@ -25,14 +25,15 @@ int init(yuime_context* ctx, SDL_Window** window, SDL_Renderer** renderer) {
 
 	yuime_context_init(
 		ctx,
-		(yuime_memory_functions){
+		screen_size,
+		(yuime_memory_functions_t){
 			mem_alloc,
 			mem_realloc,
 			mem_free
 		},
 
 		// TODO: instead of calling render_element every element render call, make yuime return a list of elements to be drawn to the screen.
-		(yuime_render_callback){
+		(yuime_render_callback_t){
 			.data = *renderer,
 			.element = render_element
 		}

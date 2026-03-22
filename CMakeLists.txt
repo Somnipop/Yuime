@@ -4,15 +4,15 @@ project(Yuime LANGUAGES C)
 set(CMAKE_RUNTIME_OUTPUT_DIRECTORY "${CMAKE_BINARY_DIR}/$<CONFIGURATION>")
 set(CMAKE_LIBRARY_OUTPUT_DIRECTORY "${CMAKE_BINARY_DIR}/$<CONFIGURATION>")
 
-option(BUILD_SHARED_LIBS "Whether should build as a shared library or static" ON)
-option(YUIME_BUILD_BASE_ONLY "Whether should build only the base or not" OFF)
+option(BUILD_SHARED_LIBS "build as a shared library?" ON)
+option(YUIME_BUILD_BASE_ONLY "build only the base?" OFF)
 
 if (YUIME_BUILD_BASE_ONLY)
 	file(GLOB YUIME_SOURCES ${CMAKE_CURRENT_SOURCE_DIR}/src/base/*.c)
 else()
 	file(GLOB YUIME_SOURCES
-		${CMAKE_CURRENT_SOURCE_DIR}/src/base/*.c
 		${CMAKE_CURRENT_SOURCE_DIR}/src/*.c
+		${CMAKE_CURRENT_SOURCE_DIR}/src/base/*.c
 		${CMAKE_CURRENT_SOURCE_DIR}/src/elements/*.c
 	)
 endif()

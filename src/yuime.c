@@ -2,13 +2,13 @@
 
 #include "yuime/util.h"
 
-static void _yuime_set_element_children_visibility(const yuime_memory_functions *mem_funcs, yuime_element_pointer_array *children, yuime_element_pointer_array_index_t i, void *data) {
+static void _yuime_set_element_children_visibility(const yuime_memory_functions_t *mem_funcs, yuime_element_pointer_array_t *children, yuime_element_pointer_array_index_t i, void *data) {
 	if (children->data[i]->flags & YUIME_ELEMENT_FLAG_VISIBLE) {
 		children->data[i]->flags = (children->data[i]->flags & ~YUIME_ELEMENT_FLAG_PARENT_RELATED_VISIBLE) | (children->data[i]->parent->flags & YUIME_ELEMENT_FLAG_PARENT_RELATED_VISIBLE);
 	}
 }
 
-void yuime_set_visibility(const yuime_memory_functions *mem_funcs, yuime_element *element, uint8_t visible) {
+void yuime_set_visibility(const yuime_memory_functions_t *mem_funcs, yuime_element_t *element, uint8_t visible) {
 	// Do not call this function if the result will be the same.
 	if ((element->flags & YUIME_ELEMENT_FLAG_PARENT_RELATED_VISIBLE) == visible ||
 	  (!(element->flags & YUIME_ELEMENT_FLAG_PARENT_RELATED_VISIBLE) && !visible)) {
@@ -20,7 +20,7 @@ void yuime_set_visibility(const yuime_memory_functions *mem_funcs, yuime_element
 		element->flags |= YUIME_ELEMENT_FLAG_VISIBLE;
 		
 		if (0) { // commented out code
-			yuime_element *parent = element->parent;
+			yuime_element_t *parent = element->parent;
 			while (parent != NULL) {
 				if ((parent->flags & YUIME_ELEMENT_FLAG_PARENT_RELATED_VISIBLE) ^ YUIME_ELEMENT_FLAG_PARENT_RELATED_VISIBLE) {
 					element->flags &= ~YUIME_ELEMENT_FLAG_PARENT_RELATED_VISIBLE;
@@ -48,7 +48,7 @@ void yuime_set_visibility(const yuime_memory_functions *mem_funcs, yuime_element
 }
 
 
-void yuime_update(yuime_context *ctx) {
+void yuime_update(yuime_context_t *ctx) {
 	/*
 	Sudado.cursorBlinkTimer = Sudado.cursorBlinkTimer + engine.getDeltaTime()
 	if Sudado.cursorBlinkTimer >= Sudado.cursorBlinkInterval then
@@ -63,7 +63,7 @@ void yuime_update(yuime_context *ctx) {
 	return;
 }
 
-void yuime_render(yuime_context *ctx) {
+void yuime_render(yuime_context_t *ctx) {
 	for (yuime_element_array_index_t i = 0; i < ctx->elements.count; ++i) {
 		if (ctx->elements.data[i]->flags & YUIME_ELEMENT_FLAG_PARENT_RELATED_VISIBLE) {
 			ctx->render.element(ctx, ctx->elements.data[i], ctx->render.data);

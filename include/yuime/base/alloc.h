@@ -14,4 +14,4 @@ typedef struct yuime_mem_functions_s {
 	yuime_mem_alloc_t alloc;
 	yuime_mem_realloc_t realloc;
 	yuime_mem_free_t free;
-} yuime_memory_functions;
+} yuime_memory_functions_t;
