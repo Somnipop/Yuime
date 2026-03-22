@@ -2,7 +2,7 @@
 
 #include <stdint.h>
 
-#include "../API.h"
+#include "API.h"
 
 // should return 0 if failed
 typedef uint8_t(*yuime_mem_alloc_t)(void** ptr, size_t size);
@@ -14,4 +14,4 @@ typedef struct yuime_mem_functions_s {
 	yuime_mem_alloc_t alloc;
 	yuime_mem_realloc_t realloc;
 	yuime_mem_free_t free;
-} yuime_memory_functions_t;
+} yuime_mem_functions_t;

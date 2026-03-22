@@ -4,7 +4,7 @@
 
 #include <stdint.h>
 
-#include "base/alloc.h"
+#include "alloc.h"
 
 #define YUIME_DEFINE_ARRAY_HEADER(type, name, function_name_prefix, array_size_t, declspec_prefix) \
 typedef struct name##_s { \
