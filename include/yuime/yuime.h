@@ -2,6 +2,8 @@
 
 #include "API.h"
 
+#include "alloc.h"
+
 #include "math/vector2.h"
 #include "math/rect.h"
 #include "math/dimension2.h"
@@ -10,8 +12,6 @@
 #include "node.h"
 
 #include "context.h"
-
-#include "alloc.h"
 
 /**
  * 
