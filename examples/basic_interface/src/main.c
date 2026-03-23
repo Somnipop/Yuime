@@ -28,6 +28,9 @@ int main() {
 	yuime_node_t* panel2_btn = yuime_node_new(&ctx, panel2);
 	yuime_node_t* panel2_btn2 = yuime_node_new(&ctx, panel2);
 
+	yuime_node_free(&ctx, panel1_btn2);
+	yuime_node_free(&ctx, panel2);
+
 	SDL_Event event;
 	uint8_t running = 1;
 	while (running) {

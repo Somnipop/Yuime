@@ -16,12 +16,14 @@ void yuime_context_cleanup(yuime_context_t *ctx) {
 	if (ctx == NULL)
 		return;
 
-	// TODO: yuime_node_tree_cleanup();
-	// for (yuime_element_pointer_array_index_t i = 0; i < ctx->elements.count; i++) {
-	// 	if (ctx->elements.data[i]->free) {
-	// 		ctx->elements.data[i]->free(ctx->elements.data[i]);
-	// 	}
-	//}
+	yuime_node_t *next_sibling;
+	for (yuime_node_t *node = ctx->node_tree; node != NULL;) {
+		next_sibling = node->next;
+
+		yuime_node_free(ctx, node);
+
+		node = next_sibling;
+	}
 
 	memset(ctx, 0, sizeof(yuime_context_t));
 }
