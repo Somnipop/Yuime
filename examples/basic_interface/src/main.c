@@ -20,6 +20,13 @@ int main() {
 		}
 	}
 
+	yuime_node_t* panel1 = yuime_node_new(&ctx, NULL);
+	yuime_node_t* panel1_btn = yuime_node_new(&ctx, panel1);
+	yuime_node_t* panel1_btn2 = yuime_node_new(&ctx, panel1);
+
+	yuime_node_t* panel2 = yuime_node_new(&ctx, NULL);
+	yuime_node_t* panel2_btn = yuime_node_new(&ctx, panel2);
+	yuime_node_t* panel2_btn2 = yuime_node_new(&ctx, panel2);
 
 	SDL_Event event;
 	uint8_t running = 1;
