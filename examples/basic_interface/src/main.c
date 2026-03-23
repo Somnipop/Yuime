@@ -20,16 +20,9 @@ int main() {
 		}
 	}
 
-	yuime_node_t* panel1 = yuime_node_new(&ctx, NULL);
-	yuime_node_t* panel1_btn = yuime_node_new(&ctx, panel1);
-	yuime_node_t* panel1_btn2 = yuime_node_new(&ctx, panel1);
-
-	yuime_node_t* panel2 = yuime_node_new(&ctx, NULL);
-	yuime_node_t* panel2_btn = yuime_node_new(&ctx, panel2);
-	yuime_node_t* panel2_btn2 = yuime_node_new(&ctx, panel2);
-
-	yuime_node_free(&ctx, panel1_btn2);
-	yuime_node_free(&ctx, panel2);
+	yuime_node_t *panel = yuime_node_new(&ctx, NULL);
+	yuime_node_t *panel_btn = yuime_node_new(&ctx, panel);
+	yuime_node_update_rect(&ctx, panel);
 
 	SDL_Event event;
 	uint8_t running = 1;

@@ -68,7 +68,7 @@ inline void _yuime_node_free_children(yuime_context_t *ctx, yuime_node_t *node) 
 }
 
 /**
- * @returns previous sibling or the node itself, if there's no previous sibling. 
+ * @returns previous sibling or the node itself, if there's no previous sibling.
  */
 inline yuime_node_t *_yuime_get_node_previous_sibling(yuime_node_t *first_sibling, yuime_node_t *node) {
 	if (first_sibling == node || first_sibling == NULL) {
@@ -104,4 +104,77 @@ void yuime_node_free(struct yuime_context_s *ctx, struct yuime_node_s *node) {
 	}
 
 	ctx->memory.free(node, sizeof(yuime_node_t));
+}
+
+
+void yuime_node_iterate_children(struct yuime_context_s *ctx, struct yuime_node_s *node, yuime_children_iterate_function_t iter_function, void *data) {
+	if (node == NULL || node->first_child == NULL || iter_function == NULL) {
+		return;
+	}
+
+	yuime_node_t *child = node->first_child;
+	yuime_node_t *next_sibling;
+	while (child != NULL) {
+		next_sibling = child->next;
+
+		if (child->first_child != NULL) {
+			yuime_node_iterate_children(ctx, child, iter_function, data);
+		}
+
+		if (iter_function(ctx, child, data) != 0) {
+			break;
+		}
+
+		child = next_sibling;
+	}
+}
+
+
+inline void _yuime_node_update_rect(struct yuime_context_s *ctx, struct yuime_node_s *node) {
+	yuime_rect_t parent_rect = node->parent == NULL?
+								(yuime_rect_t){0, 0, ctx->screen_size.x, ctx->screen_size.y}
+								: node->parent->rect;
+
+	yuime_geometry_calculate_rect(&node->geometry, &parent_rect, &node->rect);
+
+	{
+		yuime_vector2_t min_size = (yuime_vector2_t){
+			yuime_dim2_calculate_size(parent_rect.w, node->min_size.scale.x, node->min_size.offset.x),
+			yuime_dim2_calculate_size(parent_rect.h, node->min_size.scale.y, node->min_size.offset.y),
+		};
+
+		if (node->rect.w < min_size.x) {
+			node->rect.w = min_size.x;
+		}
+
+		if (node->rect.h < min_size.y) {
+			node->rect.h = min_size.y;
+		}
+	}
+
+
+	{
+		yuime_vector2_t max_size = (yuime_vector2_t){
+			yuime_dim2_calculate_size(parent_rect.w, node->max_size.scale.x, node->max_size.offset.x),
+			yuime_dim2_calculate_size(parent_rect.h, node->max_size.scale.y, node->max_size.offset.y),
+		};
+
+		if (node->rect.w > max_size.x) {
+			node->rect.w = max_size.x;
+		}
+
+		if (node->rect.h > max_size.y) {
+			node->rect.h = max_size.y;
+		}
+	}
+}
+
+inline uint8_t _yuime_node_iterate_update_rect(struct yuime_context_s *ctx, struct yuime_node_s *node, void* data) {
+	_yuime_node_update_rect(ctx, node);
+	return 0;
+}
+
+void yuime_node_update_rect(struct yuime_context_s *ctx, struct yuime_node_s *node) {
+	_yuime_node_update_rect(ctx, node);
+	yuime_node_iterate_children(ctx, node, _yuime_node_iterate_update_rect, NULL);
 }
