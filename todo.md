@@ -1,1 +1,2 @@
 - Get OS settings such as caret blink time. If any setting is not found in the user system, make use of a custom one modifiable by the user
+- Create style structure which will contain members such as background color, roundness, text color, etc.
