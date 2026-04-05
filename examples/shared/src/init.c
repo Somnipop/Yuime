@@ -3,6 +3,7 @@
 #include <stdio.h>
 
 #include "mem_alloc.h"
+#include "renderers/sdl.h"
 
 int init(const yuime_vector2_t screen_size, yuime_context_t* ctx, SDL_Window** window, SDL_Renderer** renderer) {
 	if (!SDL_Init(SDL_INIT_VIDEO|SDL_INIT_GAMEPAD)) {
@@ -24,6 +25,7 @@ int init(const yuime_vector2_t screen_size, yuime_context_t* ctx, SDL_Window** w
 
 	yuime_context_init(
 		ctx,
+		sdl_render_node,
 		screen_size,
 		(yuime_mem_functions_t){
 			mem_alloc,
@@ -31,6 +33,7 @@ int init(const yuime_vector2_t screen_size, yuime_context_t* ctx, SDL_Window** w
 			mem_free
 		}
 	);
+	ctx->data = *renderer;
 
 	return 0;
 }

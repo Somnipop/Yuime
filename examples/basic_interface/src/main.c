@@ -20,9 +20,62 @@ int main() {
 		}
 	}
 
-	yuime_node_t *panel = yuime_node_new(&ctx, NULL);
-	yuime_node_t *panel_btn = yuime_node_new(&ctx, panel);
+	yuime_dim2_t panel_dim = (yuime_dim2_t){
+		.scale = (yuime_vector2_t){
+			.x = 0.5f,
+			.y = 0.5f,
+		},
+		.offset = (yuime_vector2_t){
+			.x = 0.0f,
+			.y = 0.0f
+		}
+	};
+
+	yuime_dim2_t btn_dim = (yuime_dim2_t){
+		.scale = (yuime_vector2_t){
+			.x = 0.5f,
+			.y = 0.5f,
+		},
+		.offset = (yuime_vector2_t){
+			.x = 0.0f,
+			.y = 0.0f
+		}
+	};
+
+	yuime_style_t style = (yuime_style_t){
+		.color = (yuime_color_t){
+			.r = 0,
+			.g = 0,
+			.b = 0,
+			.a = 255
+		},
+		.border = (yuime_style_border_t){
+			.color = (yuime_color_t){
+				.r = 0,
+				.g = 255,
+				.b = 0,
+				.a = 255
+			},
+			.radius = 10.0f,
+			.size = 2.0f
+		}
+	};
+
+	yuime_node_t *panel = yuime_node_new(&ctx, NULL, &panel_dim, &style);
+	panel->geometry.pivot.x = 0.5f;
+	panel->geometry.pivot.y = 0.5f;
+	panel->geometry.position.scale.x = 0.5f;
+	panel->geometry.position.scale.y = 0.5f;
+
+	yuime_node_t *panel_btn = yuime_node_new(&ctx, panel, &btn_dim, &style);
+	panel_btn->geometry.pivot.x = 0.5f;
+	panel_btn->geometry.pivot.y = 0.5f;
+	panel_btn->geometry.position.scale.x = 0.5f;
+	panel_btn->geometry.position.scale.y = 0.5f;
+
 	yuime_node_update_rect(&ctx, panel);
+	panel->is_visible = 1;
+	panel_btn->is_visible = 1;
 
 	SDL_Event event;
 	uint8_t running = 1;
@@ -44,6 +97,13 @@ int main() {
 
 					ctx.screen_size.x = (float)w;
 					ctx.screen_size.y = (float)h;
+					if (ctx.node_tree != NULL) {
+						yuime_node_t *node = ctx.node_tree;
+						while (node != NULL) {
+							yuime_node_update_rect(&ctx, node);
+							node = node->next;
+						}
+					}
 				}
 			}
 			if (event.type == SDL_EVENT_QUIT) {
@@ -57,7 +117,7 @@ int main() {
 		SDL_SetRenderDrawColor(renderer, 240, 240, 240, 255);
 		SDL_RenderClear(renderer);
 
-		// yuime_render(&ctx);
+		yuime_render(&ctx);
 
 		SDL_RenderPresent(renderer);
 	}

@@ -60,11 +60,3 @@
 // 	*/
 // 	return;
 // }
-
-// void yuime_render(yuime_context_t *ctx) {
-// 	for (yuime_element_array_index_t i = 0; i < ctx->elements.count; ++i) {
-// 		if (ctx->elements.data[i]->flags & YUIME_ELEMENT_FLAG_PARENT_RELATED_VISIBLE) {
-// 			ctx->render.element(ctx, ctx->elements.data[i], ctx->render.data);
-// 		}
-// 	}
-// }

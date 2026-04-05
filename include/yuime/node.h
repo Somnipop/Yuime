@@ -8,6 +8,8 @@
 #include "math/dimension2.h"
 #include "math/geometry.h"
 
+#include "style.h"
+
 typedef struct yuime_node_s {
 	struct yuime_node_s *parent;
 	struct yuime_node_s *first_child;
@@ -20,6 +22,8 @@ typedef struct yuime_node_s {
 
 	yuime_rect_t rect;
 
+	yuime_style_t *style;
+
 	uint8_t is_visible	: 1;
 	uint8_t _reserved	: 7;
 } yuime_node_t;
@@ -28,11 +32,13 @@ struct yuime_context_s;
 /**
  * @brief Creates a new node and inserts it in parent.
  * 
- * @param ctx Can not be NULL.
+ * @param ctx
  * @param parent If NULL, node is created in root.
+ * @param geometry_size Sets node->geometry.size. Can be NULL.
+ * @param style Sets the style of the node.
  * @returns NULL if failed to allocate memory.
  */
-YUIME_API yuime_node_t *yuime_node_new(struct yuime_context_s *ctx, struct yuime_node_s *parent);
+YUIME_API yuime_node_t *yuime_node_new(struct yuime_context_s *ctx, struct yuime_node_s *parent, yuime_dim2_t *geometry_size, yuime_style_t *style);
 
 /**
  * @brief Frees a node together with its children and updates siblings pointers.
@@ -46,10 +52,19 @@ YUIME_API void yuime_node_free(struct yuime_context_s *ctx, struct yuime_node_s 
  */
 YUIME_API void yuime_node_update_rect(struct yuime_context_s *ctx, struct yuime_node_s *node);
 
+typedef uint8_t yuime_children_iterate_return_signal_t;
+enum yuime_children_iterate_return_signal_e {
+	YUIME_CHILDREN_ITERATE_RETURN_SIGNAL_PASS = 0, ///< Iterates children and next siblings.
+	YUIME_CHILDREN_ITERATE_RETURN_SIGNAL_NO_CHILDREN = 1, ///< Does not iterate children. NOTE: In `yuime_node_iterate_children`, it does the same effect as `YUIME_CHILDREN_ITERATE_RETURN_SIGNAL_NO_SIBLING`.
+	YUIME_CHILDREN_ITERATE_RETURN_SIGNAL_NO_SIBLING = 2, ///< Does not iterate next siblings.
+	YUIME_CHILDREN_ITERATE_RETURN_SIGNAL_BREAK = 3, ///< Does not iterate children nor next siblings. NOTE: In `yuime_node_iterate_children`, it does the same effect as `YUIME_CHILDREN_ITERATE_RETURN_SIGNAL_NO_SIBLING`.
+};
+
 /**
- * @returns anything above 0 if should stop iterating.
+ * @see yuime_children_iterate_return_signal_e
  */
-typedef uint8_t(*yuime_children_iterate_function_t)(struct yuime_context_s *ctx, struct yuime_node_s *node, void* data);
+typedef yuime_children_iterate_return_signal_t(*yuime_children_iterate_function_t)(struct yuime_context_s *ctx, struct yuime_node_s *node, void* data);
+
 /**
  * @brief Calls iter_function for every node below.
  * 
@@ -57,5 +72,19 @@ typedef uint8_t(*yuime_children_iterate_function_t)(struct yuime_context_s *ctx,
  * @param node Parent of the nodes that iter_function will be used.
  * @param iter_function The function to be called for them.
  * @param data Data passed to iter_function. Can be NULL.
+ * 
+ * @see yuime_node_iterate_children_parent_first
  */
 YUIME_API void yuime_node_iterate_children(struct yuime_context_s *ctx, struct yuime_node_s *node, yuime_children_iterate_function_t iter_function, void *data);
+
+/**
+ * @brief Calls iter_function for every node below, calling iter_function with parent before children.
+ * 
+ * @param ctx Context passed to iter_function. Can be NULL.
+ * @param node Parent of the nodes that iter_function will be used.
+ * @param iter_function The function to be called for them.
+ * @param data Data passed to iter_function. Can be NULL.
+ * 
+ * @see yuime_node_iterate_children
+ */
+YUIME_API void yuime_node_iterate_children_parent_first(struct yuime_context_s *ctx, struct yuime_node_s *node, yuime_children_iterate_function_t iter_function, void *data);

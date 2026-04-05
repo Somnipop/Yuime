@@ -1,6 +1,14 @@
 add_subdirectory(${CMAKE_CURRENT_SOURCE_DIR}/SDL EXCLUDE_FROM_ALL)
 
-file(GLOB BASIC_INTERFACE_SOURCES ${CMAKE_CURRENT_SOURCE_DIR}/shared/src/*.c ${CMAKE_CURRENT_SOURCE_DIR}/basic_interface/src/*.c)
+set(SHARED_SOURCES
+	${CMAKE_CURRENT_SOURCE_DIR}/shared/src/*.c
+	${CMAKE_CURRENT_SOURCE_DIR}/shared/src/renderers/*.c
+)
+
+file(GLOB BASIC_INTERFACE_SOURCES
+	${SHARED_SOURCES}
+	${CMAKE_CURRENT_SOURCE_DIR}/basic_interface/src/*.c
+)
 add_executable(basic_interface ${BASIC_INTERFACE_SOURCES})
 
 target_include_directories(basic_interface PRIVATE ${CMAKE_CURRENT_SOURCE_DIR}/shared/src)
