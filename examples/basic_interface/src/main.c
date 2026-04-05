@@ -9,6 +9,20 @@
 #include "event_handler.h"
 #include "mem_alloc.h"
 
+inline void cleanup(SDL_Renderer *renderer, SDL_Window *window, yuime_context_t *ctx) {
+	SDL_DestroyRenderer(renderer);
+	renderer = NULL;
+
+	SDL_DestroyWindow(window);
+	window = NULL;
+
+	yuime_context_cleanup(ctx);
+
+#ifndef NDEBUG
+	mem_print_stats();
+#endif // !NDEBUG
+}
+
 int main() {
 	SDL_Window* window = NULL;
 	SDL_Renderer* renderer = NULL;
@@ -62,20 +76,43 @@ int main() {
 	};
 
 	yuime_node_t *panel = yuime_node_new(&ctx, NULL, &panel_dim, &style);
-	panel->geometry.pivot.x = 0.5f;
-	panel->geometry.pivot.y = 0.5f;
-	panel->geometry.position.scale.x = 0.5f;
-	panel->geometry.position.scale.y = 0.5f;
+	{	
+		panel->geometry.pivot.x = 0.0f;
+		panel->geometry.pivot.y = 0.0f;
+
+		panel->geometry.position.scale.x = 0.0f;
+		panel->geometry.position.offset.x = 0.0f;
+
+		panel->geometry.position.scale.y = 0.0f;
+		panel->geometry.position.offset.y = 0.0f;
+	}
 
 	yuime_node_t *panel_btn = yuime_node_new(&ctx, panel, &btn_dim, &style);
-	panel_btn->geometry.pivot.x = 0.5f;
-	panel_btn->geometry.pivot.y = 0.5f;
-	panel_btn->geometry.position.scale.x = 0.5f;
-	panel_btn->geometry.position.scale.y = 0.5f;
+	{
+		panel_btn->geometry.pivot.x = 0.5f;
+		panel_btn->geometry.pivot.y = 0.5f;
+
+		panel_btn->geometry.position.scale.x = 0.5f;
+		panel_btn->geometry.position.offset.x = 0.0f;
+
+		panel_btn->geometry.position.scale.y = 0.5f;
+		panel_btn->geometry.position.offset.y = 0.0f;
+	}
+
+	yuime_node_t *panel2 = yuime_node_new(&ctx, NULL, &panel_dim, &style);
+	{
+		panel2->geometry.pivot.x = 1.0f;
+		panel2->geometry.pivot.y = 1.0f;
+	
+		panel2->geometry.position.scale.x = 1.0f;
+		panel2->geometry.position.offset.x = 0.0f;
+	
+		panel2->geometry.position.scale.y = 1.0f;
+		panel2->geometry.position.offset.y = 0.0f;
+	}
 
 	yuime_node_update_rect(&ctx, panel);
-	panel->is_visible = 1;
-	panel_btn->is_visible = 1;
+	yuime_node_update_rect(&ctx, panel2);
 
 	SDL_Event event;
 	uint8_t running = 1;
@@ -122,16 +159,6 @@ int main() {
 		SDL_RenderPresent(renderer);
 	}
 
-	SDL_DestroyRenderer(renderer);
-	renderer = NULL;
-
-	SDL_DestroyWindow(window);
-	window = NULL;
-
-	yuime_context_cleanup(&ctx);
-
-#ifndef NDEBUG
-	mem_print_stats();
-#endif // !NDEBUG
+	cleanup(renderer, window, &ctx);
 	return 0;
 }

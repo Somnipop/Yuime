@@ -18,6 +18,7 @@ static inline yuime_node_t *_yuime_allocate_node(yuime_mem_alloc_t mem_alloc, yu
 	memset(node, 0, sizeof(yuime_node_t));
 	node->geometry.size = geometry_size;
 	node->style = style;
+	node->is_visible = 1;
 
 	return node;
 }
@@ -115,7 +116,6 @@ void yuime_node_iterate_children(struct yuime_context_s *ctx, struct yuime_node_
 		return;
 	}
 
-	yuime_children_iterate_return_signal_t iter_result;
 	yuime_node_t *child = node->first_child;
 	yuime_node_t *next_sibling;
 	while (child != NULL) {
