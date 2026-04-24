@@ -23,8 +23,8 @@ yuime_children_iterate_return_signal_t sdl_render_node(yuime_context_t *ctx, yui
 	};
 
 	// draw border
-	if (node->widget != NULL && node->widget_type == YUIME_WIDGET_TYPE_PANEL) {
-		yuime_widget_panel_t *panel = (yuime_widget_panel_t*)node->widget;
+	if (node->widget.widget != NULL && node->widget.type == YUIME_WIDGET_TYPE_PANEL) {
+		yuime_widget_panel_t *panel = (yuime_widget_panel_t*)node->widget.widget;
 		SDL_SetRenderDrawColor(renderer, panel->style->border.color.r, panel->style->border.color.g, panel->style->border.color.b, panel->style->border.color.a);
 	}
 	SDL_RenderFillRect(renderer, &rect);

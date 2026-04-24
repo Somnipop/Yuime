@@ -65,7 +65,7 @@ int main() {
 			.size = 2.0f
 		}
 	};
-	((yuime_widget_panel_t*)panel->widget)->style = &panel_style;
+	((yuime_widget_panel_t*)panel->widget.widget)->style = &panel_style;
 
 	// yuime_node_t *panel_btn = yuime_node_new(&ctx, panel, &btn_dim);
 

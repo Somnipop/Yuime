@@ -3,7 +3,6 @@
 #include "yuime/context.h"
 
 #include "yuime/widget/events.h"
-#include "yuime/widget/type.h"
 #include "yuime/widget/widget.h"
 
 yuime_node_t *yuime_widget_panel_new_node(yuime_context_t *ctx, yuime_node_t *parent, const yuime_geometry_t *geometry) {
@@ -17,7 +16,7 @@ yuime_node_t *yuime_widget_panel_new_node(yuime_context_t *ctx, yuime_node_t *pa
 		yuime_node_free(ctx, node);
 		return NULL;
 	}
-	node->widget_size = sizeof(yuime_widget_panel_t);
+	node->widget.size = sizeof(yuime_widget_panel_t);
 
 	node->rect = &panel->rect;
 
@@ -31,8 +30,8 @@ yuime_node_t *yuime_widget_panel_new_node(yuime_context_t *ctx, yuime_node_t *pa
 		node->on_window_resize(ctx, node, (yuime_vector2_t){1,1}, (yuime_vector2_t){0,0});
 	}
 
-	node->widget_type = YUIME_WIDGET_TYPE_PANEL;
-	node->widget = panel;
+	node->widget.type = YUIME_WIDGET_TYPE_PANEL;
+	node->widget.widget = panel;
 
 	return node;
 }

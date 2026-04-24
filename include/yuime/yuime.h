@@ -13,7 +13,6 @@
 #include "style/border.h"
 
 #include "widget/events.h"
-#include "widget/type.h"
 #include "widget/widget.h"
 #include "widget/panel.h"
 

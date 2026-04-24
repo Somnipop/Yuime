@@ -9,7 +9,7 @@
 #include "math/geometry.h"
 #include "math/dimension2.h"
 
-#include "widget/type.h"
+#include "widget/widget.h"
 
 /*
 ---@alias Sudado.IsPointCollidingDragRegion fun(self: any, point: SDL.FPoint): boolean
@@ -100,9 +100,7 @@ typedef struct yuime_node_s {
 	struct yuime_node_s *first_child;
 	struct yuime_node_s *next;
 
-	yuime_widget_type_t widget_type;
-	void *widget;
-	uint16_t widget_size;
+	yuime_widget_t widget;
 
 	yuime_rect_t *rect;
 	yuime_geometry_t *geometry;
