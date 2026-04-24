@@ -3,14 +3,16 @@
 #include <stdlib.h>
 #include <string.h>
 
-void yuime_context_init(yuime_context_t *ctx, yuime_render_node_t render_node, const yuime_vector2_t screen_size, yuime_mem_functions_t mem_functions) {
+void yuime_context_init(yuime_context_t *ctx, yuime_render_commands_function_t render_commands_func, const yuime_vector2_t screen_size, yuime_mem_functions_t mem_functions) {
 	if (ctx == NULL)
 		return;
 
 	memset(ctx, 0, sizeof(yuime_context_t));
 	ctx->screen_size = screen_size;
 	ctx->memory = mem_functions;
-	ctx->render_node = render_node;
+
+	ctx->render.render_commands_func = render_commands_func;
+	yuime_render_command_array_init(&ctx->memory, &ctx->render.render_commands, 0);
 }
 
 void yuime_context_cleanup(yuime_context_t *ctx) {

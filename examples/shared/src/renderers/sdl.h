@@ -4,4 +4,6 @@
 
 #include <yuime/context.h>
 
-yuime_children_iterate_return_signal_t sdl_render_node(yuime_context_t *ctx, yuime_node_t *node, void* data);
+// yuime_children_iterate_return_signal_t sdl_render_node(yuime_context_t *ctx, yuime_node_t *node, void* data);
+
+void sdl_render_commands(yuime_context_t *ctx);

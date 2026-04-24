@@ -6,7 +6,7 @@
 #include "math/vector2.h"
 #include "node.h"
 #include "resize_region.h"
-#include "render.h"
+#include "render/render.h"
 
 
 typedef uint8_t yuime_context_flag_t;
@@ -31,7 +31,7 @@ typedef struct yuime_context_s {
 	yuime_node_t *hovered_node;
 	yuime_node_t *pressed_node;
 
-	yuime_render_node_t render_node;
+	yuime_render_t render;
 
 	yuime_vector2_t screen_size;
 
@@ -39,14 +39,12 @@ typedef struct yuime_context_s {
 	yuime_resize_region_t hovered_resize_region;
 
 	yuime_context_flag_t flags;
-
-	void* data; ///< Use it however you want.
 } yuime_context_t;
 
 /**
  * @brief Sets default values for the given context.
  * @param ctx Context to initialize.
- * @param mem_functions memory functions related to memory allocation and deallocation.
+ * @param mem_functions Memory functions related to memory allocation and deallocation.
  */
-YUIME_API void yuime_context_init(yuime_context_t *ctx, yuime_render_node_t render_node, const yuime_vector2_t screen_size, yuime_mem_functions_t mem_functions);
+YUIME_API void yuime_context_init(yuime_context_t *ctx, yuime_render_commands_function_t render_commands_func, const yuime_vector2_t screen_size, yuime_mem_functions_t mem_functions);
 YUIME_API void yuime_context_cleanup(yuime_context_t *ctx);

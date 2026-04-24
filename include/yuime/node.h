@@ -46,7 +46,6 @@ typedef void(*yuime_key_release_callback_t)(struct yuime_context_s *ctx, struct 
 typedef void(*yuime_char_press_callback_t)(struct yuime_context_s *ctx, struct yuime_node_s *node, uint16_t codepoint);
 
 typedef void(*yuime_update_callback_t)(struct yuime_context_s *ctx, struct yuime_node_s *node);
-typedef void(*yuime_draw_callback_t)(struct yuime_context_s *ctx, struct yuime_node_s *node, void* data);
 
 // TODO: make dynamic arrays for: events, update and draw callbacks.
 // TODO: draw callbacks should consider z index when being made.
@@ -129,7 +128,6 @@ typedef struct yuime_node_s {
 	yuime_key_release_callback_t on_key_release;
 
 	yuime_update_callback_t update;
-	yuime_draw_callback_t draw;
 } yuime_node_t;
 
 struct yuime_context_s;

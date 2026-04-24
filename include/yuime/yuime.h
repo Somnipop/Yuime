@@ -16,9 +16,12 @@
 #include "widget/widget.h"
 #include "widget/panel.h"
 
+#include "render/render.h"
+#include "render/command.h"
+#include "render/rectangle.h"
+
 #include "context.h"
 #include "resize_region.h"
-#include "render.h"
 #include "events.h"
 #include "macros.h"
 

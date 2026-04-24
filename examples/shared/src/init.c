@@ -23,9 +23,11 @@ int init(const yuime_vector2_t screen_size, yuime_context_t* ctx, SDL_Window** w
 		return 1;
 	}
 
+	SDL_SetRenderDrawBlendMode(*renderer, SDL_BLENDMODE_BLEND);
+
 	yuime_context_init(
 		ctx,
-		sdl_render_node,
+		sdl_render_commands,
 		screen_size,
 		(yuime_mem_functions_t){
 			mem_alloc,
@@ -33,7 +35,7 @@ int init(const yuime_vector2_t screen_size, yuime_context_t* ctx, SDL_Window** w
 			mem_free
 		}
 	);
-	ctx->data = *renderer;
+	ctx->render.data = *renderer;
 
 	return 0;
 }

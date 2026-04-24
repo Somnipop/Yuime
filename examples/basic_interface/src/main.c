@@ -45,16 +45,16 @@ int main() {
 		}
 	};
 
-	yuime_dim2_t btn_dim = (yuime_dim2_t){
-		.scale = (yuime_vector2_t){
-			.x = 0.5f,
-			.y = 0.5f,
-		},
-		.offset = (yuime_vector2_t){
-			.x = 0.0f,
-			.y = 0.0f
-		}
-	};
+	// yuime_dim2_t btn_dim = (yuime_dim2_t){
+	// 	.scale = (yuime_vector2_t){
+	// 		.x = 0.5f,
+	// 		.y = 0.5f,
+	// 	},
+	// 	.offset = (yuime_vector2_t){
+	// 		.x = 0.0f,
+	// 		.y = 0.0f
+	// 	}
+	// };
 
 	YUIME_WIDGET(&ctx, panel, NULL, yuime_widget_panel_new_node, 0.5f, 0.5f, 0.5f, 0.0f, 0.5f, 0.0f, &panel_dim);
 

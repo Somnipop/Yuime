@@ -15,7 +15,7 @@ static inline yuime_node_t *_yuime_get_node_last_sibling(yuime_node_t *node) {
 }
 
 static inline yuime_node_t *_yuime_allocate_node(yuime_mem_alloc_t mem_alloc, yuime_node_t *node) {
-	if (!mem_alloc(YUIME_ALLOC_CONTEXT_NODE, &node, sizeof(yuime_node_t)))
+	if (!mem_alloc(YUIME_ALLOC_CONTEXT_NODE, (void**)&node, sizeof(yuime_node_t)))
 		return NULL;
 
 	memset(node, 0, sizeof(yuime_node_t));
@@ -64,8 +64,9 @@ static inline void _yuime_node_free_children(yuime_context_t *ctx, yuime_node_t 
 
 		_yuime_node_free_children(ctx, child);
 		// memset(child, 0, sizeof(yuime_node_t));
-		if (child->widget.widget != NULL);
+		if (child->widget.widget != NULL) {
 			ctx->memory.free(YUIME_ALLOC_CONTEXT_WIDGET, child->widget.widget, child->widget.size);
+		}
 		ctx->memory.free(YUIME_ALLOC_CONTEXT_NODE, child, sizeof(yuime_node_t));
 
 		child = next_to_process;
