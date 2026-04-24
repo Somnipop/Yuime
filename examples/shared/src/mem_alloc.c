@@ -142,7 +142,7 @@ void mem_free(yuime_alloc_context_t ctx, void* ptr, size_t size) {
 
 #ifndef NDEBUG
 void mem_print_stats() {
-	printf("--- HEAP STATUS ---\nAllocations total: %zu (%zu bytes)\n - Nodes total: %zu\n - Widgets total: %zu\nReallocations total: %zu (%zu bytes)\nCurrently allocated: %zu (%zu bytes)\n - Nodes: %zu\n - Widgets: %zu\n-------------------\n",
+	printf("--- HEAP STATUS ---\nAllocations total: %zu (%zu bytes)\n - Nodes: %zu\n - Widgets: %zu\nReallocations total: %zu (%zu bytes)\nCurrently allocated: %zu (%zu bytes)\n - Nodes: %zu\n - Widgets: %zu\n-------------------\n",
 		allocations_total, allocations_total_in_bytes,
 		allocations_nodes_total, allocations_widgets_total,
 		reallocations_total, reallocations_total_in_bytes,
