@@ -8,6 +8,7 @@ option(BUILD_SHARED_LIBS "build as a shared library?" ON)
 
 file(GLOB YUIME_SOURCES
 	${CMAKE_CURRENT_SOURCE_DIR}/src/*.c
+	${CMAKE_CURRENT_SOURCE_DIR}/src/widget/*.c
 )
 
 if (BUILD_SHARED_LIBS)
