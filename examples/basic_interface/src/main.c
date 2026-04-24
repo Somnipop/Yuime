@@ -56,63 +56,23 @@ int main() {
 		}
 	};
 
-	yuime_style_t style = (yuime_style_t){
-		.color = (yuime_color_t){
-			.r = 0,
-			.g = 0,
-			.b = 0,
-			.a = 255
-		},
-		.border = (yuime_style_border_t){
-			.color = (yuime_color_t){
-				.r = 0,
-				.g = 255,
-				.b = 0,
-				.a = 255
-			},
-			.radius = 10.0f,
+	YUIME_WIDGET(&ctx, panel, NULL, yuime_widget_panel_new_node, 0.5f, 0.5f, 0.5f, 0.0f, 0.5f, 0.0f, &panel_dim);
+
+	yuime_widget_panel_style_t panel_style = (yuime_widget_panel_style_t){
+		.border = {
+			.color = {.r=0, .g=0, .b=0, .a=255},
+			.radius = 0.0f,
 			.size = 2.0f
 		}
 	};
+	((yuime_widget_panel_t*)panel->widget)->style = &panel_style;
 
-	yuime_node_t *panel = yuime_node_new(&ctx, NULL, &panel_dim, &style);
-	{	
-		panel->geometry.pivot.x = 0.0f;
-		panel->geometry.pivot.y = 0.0f;
+	// yuime_node_t *panel_btn = yuime_node_new(&ctx, panel, &btn_dim);
 
-		panel->geometry.position.scale.x = 0.0f;
-		panel->geometry.position.offset.x = 0.0f;
+	// yuime_node_t *panel2 = yuime_node_new(&ctx, NULL, &panel_dim);
 
-		panel->geometry.position.scale.y = 0.0f;
-		panel->geometry.position.offset.y = 0.0f;
-	}
-
-	yuime_node_t *panel_btn = yuime_node_new(&ctx, panel, &btn_dim, &style);
-	{
-		panel_btn->geometry.pivot.x = 0.5f;
-		panel_btn->geometry.pivot.y = 0.5f;
-
-		panel_btn->geometry.position.scale.x = 0.5f;
-		panel_btn->geometry.position.offset.x = 0.0f;
-
-		panel_btn->geometry.position.scale.y = 0.5f;
-		panel_btn->geometry.position.offset.y = 0.0f;
-	}
-
-	yuime_node_t *panel2 = yuime_node_new(&ctx, NULL, &panel_dim, &style);
-	{
-		panel2->geometry.pivot.x = 1.0f;
-		panel2->geometry.pivot.y = 1.0f;
-	
-		panel2->geometry.position.scale.x = 1.0f;
-		panel2->geometry.position.offset.x = 0.0f;
-	
-		panel2->geometry.position.scale.y = 1.0f;
-		panel2->geometry.position.offset.y = 0.0f;
-	}
-
-	yuime_node_update_rect(&ctx, panel);
-	yuime_node_update_rect(&ctx, panel2);
+	// yuime_event_resize(&ctx, panel);
+	// yuime_event_resize(&ctx, panel2);
 
 	SDL_Event event;
 	uint8_t running = 1;
@@ -131,16 +91,7 @@ int main() {
 					// SDL_GetWindowSize();
 					int w, h;
 					SDL_GetWindowSizeInPixels(window, &w, &h);
-
-					ctx.screen_size.x = (float)w;
-					ctx.screen_size.y = (float)h;
-					if (ctx.node_tree != NULL) {
-						yuime_node_t *node = ctx.node_tree;
-						while (node != NULL) {
-							yuime_node_update_rect(&ctx, node);
-							node = node->next;
-						}
-					}
+					yuime_event_window_resize(&ctx, (yuime_vector2_t){(float)w, (float)h});
 				}
 			}
 			if (event.type == SDL_EVENT_QUIT) {
