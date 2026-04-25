@@ -15,6 +15,8 @@ static size_t allocations_total_in_bytes = 0;
 static size_t reallocations_total = 0;
 
 typedef struct mem_alloc_contextualized_s {
+	const char* name;
+
 	size_t allocations;
 	size_t allocations_in_bytes;
 
@@ -24,7 +26,11 @@ typedef struct mem_alloc_contextualized_s {
 	size_t reallocations_total;
 } mem_alloc_contextualized_t;
 
-static mem_alloc_contextualized_t allocations_contextualized[YUIME_ALLOC_CONTEXT_COUNT] = {0};
+#define X(_var, _id, _name) {_name, 0,0, 0,0, 0},
+static mem_alloc_contextualized_t allocations_contextualized[YUIME_ALLOC_CONTEXT_COUNT] = {
+	_YUIME_ALLOC_CONTEXT_LIST(X)
+};
+#undef X
 #endif // !NDEBUG
 
 
@@ -37,7 +43,6 @@ uint8_t mem_alloc(yuime_alloc_context_t ctx, void** ptr, size_t size) {
 
 	if (*ptr) {
 #ifndef NDEBUG
-		printf("Allocated %zu bytes\n", size);
 		allocations++;
 		allocations_in_bytes += size;
 
@@ -50,13 +55,21 @@ uint8_t mem_alloc(yuime_alloc_context_t ctx, void** ptr, size_t size) {
 
 			allocations_contextualized[ctx].allocations_in_bytes += size;
 			allocations_contextualized[ctx].allocations_total_in_bytes += size;
+
+			printf("%s: Allocated %zu bytes\n", allocations_contextualized[ctx].name, size);
+		} else {
+			printf("Allocated %zu bytes\n", size);
 		}
 #endif // !NDEBUG
 		return 1;
 
 	} else {
 #ifndef NDEBUG
-		printf("Failed to allocate %zu bytes\n", size);
+		if (ctx < YUIME_ALLOC_CONTEXT_COUNT) {
+			printf("%s: Failed to allocate %zu bytes\n", allocations_contextualized[ctx].name, size);
+		} else {
+			printf("Failed to allocate %zu bytes\n", size);
+		}
 #endif // !NDEBUG
 		return 0;
 	}
@@ -78,7 +91,6 @@ uint8_t mem_realloc(yuime_alloc_context_t ctx, void** ptr, size_t current_size, 
 
 	if (new_ptr) {
 #ifndef NDEBUG
-		printf("Re-allocated from %zu to %zu bytes\n", current_size, new_size);
 		reallocations_total++;
 
 		allocations_in_bytes += new_size;
@@ -95,6 +107,10 @@ uint8_t mem_realloc(yuime_alloc_context_t ctx, void** ptr, size_t current_size, 
 
 			allocations_contextualized[ctx].allocations_total_in_bytes += new_size;
 			allocations_contextualized[ctx].allocations_total_in_bytes -= current_size;
+
+			printf("%s: Re-allocated from %zu to %zu bytes\n", allocations_contextualized[ctx].name, current_size, new_size);
+		} else {
+			printf("Re-allocated from %zu to %zu bytes\n", current_size, new_size);
 		}
 #endif // !NDEBUG
 		*ptr = new_ptr;
@@ -102,7 +118,11 @@ uint8_t mem_realloc(yuime_alloc_context_t ctx, void** ptr, size_t current_size, 
 
 	} else {
 #ifndef NDEBUG
-		printf("Failed to re-allocate from %zu to %zu bytes\n", current_size, new_size);
+		if (ctx < YUIME_ALLOC_CONTEXT_COUNT) {
+			printf("%s: Failed to re-allocate from %zu to %zu bytes\n", allocations_contextualized[ctx].name, current_size, new_size);
+		} else {
+			printf("Failed to re-allocate from %zu to %zu bytes\n", current_size, new_size);
+		}
 #endif // !NDEBUG
 		return 0;
 	}
@@ -116,13 +136,16 @@ void mem_free(yuime_alloc_context_t ctx, void* ptr, size_t size) {
 
 	free(ptr);
 #ifndef NDEBUG
-	printf("Freed %zu bytes\n", size);
 	allocations--;
 	allocations_in_bytes -= size;
 
 	if (ctx < YUIME_ALLOC_CONTEXT_COUNT) {
 		allocations_contextualized[ctx].allocations--;
 		allocations_contextualized[ctx].allocations_in_bytes -= size;
+
+		printf("%s: Freed %zu bytes\n", allocations_contextualized[ctx].name, size);
+	} else {
+		printf("Freed %zu bytes\n", size);
 	}
 #endif // !NDEBUG
 }
