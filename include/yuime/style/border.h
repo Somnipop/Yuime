@@ -7,9 +7,11 @@ typedef struct yuime_style_border_s {
 	float size;
 } yuime_style_border_t;
 
-typedef struct yuime_style_border_radius_s {
-	float top_left;
-	float top_right;
-	float bottom_left;
-	float bottom_right;
-} yuime_style_border_radius_t;
+typedef struct yuime_style_border_corners_s {
+	float top_left_radius;
+	float top_right_radius;
+	float bottom_left_radius;
+	float bottom_right_radius;
+
+	yuime_color_t color;
+} yuime_style_border_corners_t;

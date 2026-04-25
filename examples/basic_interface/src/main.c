@@ -61,7 +61,6 @@ int main() {
 	yuime_widget_panel_style_t panel_style = (yuime_widget_panel_style_t){
 		.border = {
 			.color = {.r=0, .g=0, .b=0, .a=255},
-			.radius = 0.0f,
 			.size = 2.0f
 		}
 	};

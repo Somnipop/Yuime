@@ -1,0 +1,485 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=9"/>
+<meta name="generator" content="Doxygen 1.16.1"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<!-- BEGIN opengraph metadata -->
+<meta property="og:title" content="Yuime" />
+<meta property="og:image" content="" />
+<meta property="og:description" content="cross-platform graphical user interface" />
+<meta property="og:url" content="https://github.com/SomniPop/Yuime" />
+<!-- END opengraph metadata -->
+<!-- BEGIN twitter metadata -->
+<meta name="twitter:image:src" content="" />
+<meta name="twitter:title" content="SomniPop" />
+<meta name="twitter:description" content="" />
+<!-- END twitter metadata -->
+<title>Yuime: yuime_node_s Struct Reference</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<link rel="icon" type="image/svg+xml" href="logo.png"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<script type="text/javascript" src="doxygen-awesome-darkmode-toggle.js"></script>
+<script type="text/javascript" src="doxygen-awesome-fragment-copy-button.js"></script>
+<script type="text/javascript" src="doxygen-awesome-paragraph-link.js"></script>
+<script type="text/javascript" src="doxygen-awesome-interactive-toc.js"></script>
+<script type="text/javascript" src="doxygen-awesome-tabs.js"></script>
+<script type="text/javascript" src="toggle-alternative-theme.js"></script>
+<script type="text/javascript">
+    DoxygenAwesomeFragmentCopyButton.init()
+    DoxygenAwesomeDarkModeToggle.init()
+    DoxygenAwesomeParagraphLink.init()
+    DoxygenAwesomeInteractiveToc.init()
+    DoxygenAwesomeTabs.init()
+</script>
+<link href="navtree.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="navtreedata.js"></script>
+<script type="text/javascript" src="navtree.js"></script>
+<script type="text/javascript" src="cookie.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+<link href="doxygen-awesome.css" rel="stylesheet" type="text/css"/>
+<link href="custom.css" rel="stylesheet" type="text/css"/>
+<link href="doxygen-awesome-sidebar-only.css" rel="stylesheet" type="text/css"/>
+<link href="doxygen-awesome-sidebar-only-darkmode-toggle.css" rel="stylesheet" type="text/css"/>
+<link href="custom-alternative.css" rel="stylesheet" type="text/css"/>
+</head>
+<body>
+<!-- https://tholman.com/-corners/ -->
+<a href="https://github.com/SomniPop/Yuime" class="github-corner" title="View source on GitHub" target="_blank" rel="noopener noreferrer">
+    <svg viewBox="0 0 250 250" width="40" height="40" style="position: absolute; top: 0; border: 0; right: 0; z-index: 99;" aria-hidden="true">
+    <path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"></path><path d="M128.3,109.0 C113.8,99.7 119.0,89.6 119.0,89.6 C122.0,82.7 120.5,78.6 120.5,78.6 C119.2,72.0 123.4,76.3 123.4,76.3 C127.3,80.9 125.5,87.3 125.5,87.3 C122.9,97.6 130.6,101.9 134.4,103.2" fill="currentColor" style="transform-origin: 130px 106px;" class="octo-arm"></path><path d="M115.0,115.0 C114.9,115.1 118.7,116.5 119.8,115.4 L133.7,101.6 C136.9,99.2 139.9,98.4 142.2,98.6 C133.8,88.0 127.5,74.4 143.8,58.0 C148.5,53.4 154.0,51.2 159.7,51.0 C160.3,49.4 163.2,43.6 171.4,40.1 C171.4,40.1 176.1,42.5 178.8,56.2 C183.1,58.6 187.2,61.8 190.9,65.4 C194.5,69.0 197.7,73.2 200.1,77.6 C213.8,80.2 216.3,84.9 216.3,84.9 C212.7,93.1 206.9,96.0 205.4,96.6 C205.1,102.4 203.0,107.8 198.3,112.5 C181.9,128.9 168.3,122.5 157.7,114.1 C157.9,116.9 156.7,120.9 152.7,124.9 L141.0,136.5 C139.8,137.7 141.6,141.9 141.8,141.8 Z" fill="currentColor" class="octo-body"></path></svg></a><style>.github-corner:hover .octo-arm{animation:octocat-wave 560ms ease-in-out}@keyframes octocat-wave{0%,100%{transform:rotate(0)}20%,60%{transform:rotate(-25deg)}40%,80%{transform:rotate(10deg)}}@media (max-width:500px){.github-corner:hover .octo-arm{animation:none}.github-corner .octo-arm{animation:octocat-wave 560ms ease-in-out}}</style>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr style="height: 56px;">
+  <td id="projectlogo"><img alt="Logo" src="logo.png"/></td>
+  <td id="projectalign" style="padding-left: 0.5em;">
+   <div id="projectname">Yuime
+   &#160;<span id="projectnumber">v0.0.1</span>
+   </div>
+   <div id="projectbrief">Yet another &quot;revolutionary&quot; graphical user interface library</div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- Generated by Doxygen 1.16.1 -->
+<script type="text/javascript">
+var searchBox = new SearchBox("searchBox", "search/",'.html');
+</script>
+<script type="text/javascript">
+$(function() { codefold.init(); });
+</script>
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+$(function() {
+  initMenu('',true,false,'search.php','Search',true);
+  $(function() { init_search(); });
+});
+</script>
+<div id="main-nav"></div>
+</div><!-- top -->
+<div id="side-nav" class="ui-resizable side-nav-resizable">
+  <div id="nav-tree">
+    <div id="nav-tree-contents">
+      <div id="nav-sync" class="sync"></div>
+    </div>
+  </div>
+  <div id="splitbar" style="-moz-user-select:none;" 
+       class="ui-resizable-handle">
+  </div>
+</div>
+<script type="text/javascript">
+$(function(){initNavTree('structyuime__node__s.html','','structyuime__node__s-members'); });
+</script>
+<div id="container">
+<div id="doc-content">
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<div id="MSearchResults">
+<div class="SRPage">
+<div id="SRIndex">
+<div id="SRResults"></div>
+<div class="SRStatus" id="Loading">Loading...</div>
+<div class="SRStatus" id="Searching">Searching...</div>
+<div class="SRStatus" id="NoMatches">No Matches</div>
+</div>
+</div>
+</div>
+</div>
+
+<div class="header">
+  <div class="headertitle"><div class="title">yuime_node_s Struct Reference</div></div>
+</div><!--header-->
+<div class="contents">
+
+<p><code>#include &lt;<a class="el" href="node_8h_source.html">node.h</a>&gt;</code></p>
+<table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 id="header-pub-attribs" class="groupheader"><a id="pub-attribs" name="pub-attribs"></a>
+Public Attributes</h2></td></tr>
+<tr class="memitem:a14dad4e46eb0a54ba498e6ea10f61fd4" id="r_a14dad4e46eb0a54ba498e6ea10f61fd4"><td class="memItemLeft">struct <a class="el" href="structyuime__node__s.html">yuime_node_s</a> *&#160;</td><td class="memItemRight"><a class="el" href="#a14dad4e46eb0a54ba498e6ea10f61fd4">parent</a></td></tr>
+<tr class="memitem:a6d007e47a31306041f9f9fd8518dff2a" id="r_a6d007e47a31306041f9f9fd8518dff2a"><td class="memItemLeft">struct <a class="el" href="structyuime__node__s.html">yuime_node_s</a> *&#160;</td><td class="memItemRight"><a class="el" href="#a6d007e47a31306041f9f9fd8518dff2a">first_child</a></td></tr>
+<tr class="memitem:aa783470ea5a3e663e81d18277711a235" id="r_aa783470ea5a3e663e81d18277711a235"><td class="memItemLeft">struct <a class="el" href="structyuime__node__s.html">yuime_node_s</a> *&#160;</td><td class="memItemRight"><a class="el" href="#aa783470ea5a3e663e81d18277711a235">next</a></td></tr>
+<tr class="memitem:a3efde65f997e1cedb65a8c572e69021e" id="r_a3efde65f997e1cedb65a8c572e69021e"><td class="memItemLeft"><a class="el" href="widget_8h.html#aa0509b6a82eb18b0bd22fead7e295ed1">yuime_widget_t</a>&#160;</td><td class="memItemRight"><a class="el" href="#a3efde65f997e1cedb65a8c572e69021e">widget</a></td></tr>
+<tr class="memitem:a340823ea18d4fc2cef902f0e4507796f" id="r_a340823ea18d4fc2cef902f0e4507796f"><td class="memItemLeft"><a class="el" href="rect_8h.html#ac2f9152e4168b9e48d0b3711f38175db">yuime_rect_t</a> *&#160;</td><td class="memItemRight"><a class="el" href="#a340823ea18d4fc2cef902f0e4507796f">rect</a></td></tr>
+<tr class="memitem:a2ebc8e21e2ffd9e0c3729e39192689c0" id="r_a2ebc8e21e2ffd9e0c3729e39192689c0"><td class="memItemLeft"><a class="el" href="geometry_8h.html#a1bd5411da95ff1bd8b66f4707f80eaaf">yuime_geometry_t</a> *&#160;</td><td class="memItemRight"><a class="el" href="#a2ebc8e21e2ffd9e0c3729e39192689c0">geometry</a></td></tr>
+<tr class="memitem:aa6886fad23a2e5e97d8bf72820bc3985" id="r_aa6886fad23a2e5e97d8bf72820bc3985"><td class="memItemLeft"><a class="el" href="dimension2_8h.html#aed0fd61bd07a336ba1cd1782265e15ed">yuime_dim2_t</a> *&#160;</td><td class="memItemRight"><a class="el" href="#aa6886fad23a2e5e97d8bf72820bc3985">max_size</a></td></tr>
+<tr class="memitem:ac6fecc2dc9c2b80ac06b44d562a8f0c4" id="r_ac6fecc2dc9c2b80ac06b44d562a8f0c4"><td class="memItemLeft"><a class="el" href="dimension2_8h.html#aed0fd61bd07a336ba1cd1782265e15ed">yuime_dim2_t</a> *&#160;</td><td class="memItemRight"><a class="el" href="#ac6fecc2dc9c2b80ac06b44d562a8f0c4">min_size</a></td></tr>
+<tr class="memitem:a4d69dd356faeac0df94d99e2756b4933" id="r_a4d69dd356faeac0df94d99e2756b4933"><td class="memItemLeft"><a class="el" href="node_8h.html#af744543069867b711abe966ecc176d03">yuime_window_resize_callback_t</a>&#160;</td><td class="memItemRight"><a class="el" href="#a4d69dd356faeac0df94d99e2756b4933">on_window_resize</a></td></tr>
+<tr class="memitem:a1ee104666c5b802f73b0e249af221dd7" id="r_a1ee104666c5b802f73b0e249af221dd7"><td class="memItemLeft"><a class="el" href="node_8h.html#ad290ed128df2073a9d3164f15041bbb9">yuime_resize_callback_t</a>&#160;</td><td class="memItemRight"><a class="el" href="#a1ee104666c5b802f73b0e249af221dd7">on_resize</a></td></tr>
+<tr class="memitem:a27929350eacaa7f6c64e688e65e6cfc0" id="r_a27929350eacaa7f6c64e688e65e6cfc0"><td class="memItemLeft"><a class="el" href="node_8h.html#ab835e2b31adc36622ae42e46e112dc24">yuime_move_callback_t</a>&#160;</td><td class="memItemRight"><a class="el" href="#a27929350eacaa7f6c64e688e65e6cfc0">on_move</a></td></tr>
+<tr class="memitem:a0973ee1724ea66b2264a085a80dc4dd0" id="r_a0973ee1724ea66b2264a085a80dc4dd0"><td class="memItemLeft"><a class="el" href="node_8h.html#a027984f090224c2dcecabdf5344f662a">yuime_focus_callback_t</a>&#160;</td><td class="memItemRight"><a class="el" href="#a0973ee1724ea66b2264a085a80dc4dd0">on_focus</a></td></tr>
+<tr class="memitem:a4c90cd466f4f5f18496daa5578e2b80e" id="r_a4c90cd466f4f5f18496daa5578e2b80e"><td class="memItemLeft"><a class="el" href="node_8h.html#ae6c4f7b223c6bb32e9e4e3d39c5a5b41">yuime_unfocus_callback_t</a>&#160;</td><td class="memItemRight"><a class="el" href="#a4c90cd466f4f5f18496daa5578e2b80e">on_unfocus</a></td></tr>
+<tr class="memitem:a90be51ae0187d5dfc8bcb3b18f547f68" id="r_a90be51ae0187d5dfc8bcb3b18f547f68"><td class="memItemLeft"><a class="el" href="node_8h.html#a8956dc62aeb4c3192dd06ba7e5262304">yuime_hover_callback_t</a>&#160;</td><td class="memItemRight"><a class="el" href="#a90be51ae0187d5dfc8bcb3b18f547f68">on_hover</a></td></tr>
+<tr class="memitem:aae186e2765791b52311bed466960158a" id="r_aae186e2765791b52311bed466960158a"><td class="memItemLeft"><a class="el" href="node_8h.html#a5ae4865665fb9ca61be974cef214356d">yuime_unhover_callback_t</a>&#160;</td><td class="memItemRight"><a class="el" href="#aae186e2765791b52311bed466960158a">on_unhover</a></td></tr>
+<tr class="memitem:ad360226b0fe91cd52c39f3222f51b056" id="r_ad360226b0fe91cd52c39f3222f51b056"><td class="memItemLeft"><a class="el" href="node_8h.html#ae4409074071942e6bae3fd04fc428747">yuime_mouse_button_press_callback_t</a>&#160;</td><td class="memItemRight"><a class="el" href="#ad360226b0fe91cd52c39f3222f51b056">on_mouse_button_press</a></td></tr>
+<tr class="memitem:a7ea5efe88830daaf9275367d303a3db4" id="r_a7ea5efe88830daaf9275367d303a3db4"><td class="memItemLeft"><a class="el" href="node_8h.html#ac1e24dff0f9f4700e97f129376ac51f5">yuime_mouse_button_release_callback_t</a>&#160;</td><td class="memItemRight"><a class="el" href="#a7ea5efe88830daaf9275367d303a3db4">on_mouse_button_release</a></td></tr>
+<tr class="memitem:a117f55af1bae54d4dd23e4254331e8af" id="r_a117f55af1bae54d4dd23e4254331e8af"><td class="memItemLeft"><a class="el" href="node_8h.html#a6550aba2c9bd97869342a4fab1f4b138">yuime_mouse_wheel_callback_t</a>&#160;</td><td class="memItemRight"><a class="el" href="#a117f55af1bae54d4dd23e4254331e8af">on_mouse_wheel</a></td></tr>
+<tr class="memitem:a28bc2a236415ecf4d538c16e2576e955" id="r_a28bc2a236415ecf4d538c16e2576e955"><td class="memItemLeft"><a class="el" href="node_8h.html#ad07cee194192b3f44dd130b615b7ecde">yuime_mouse_move_callback_t</a>&#160;</td><td class="memItemRight"><a class="el" href="#a28bc2a236415ecf4d538c16e2576e955">on_mouse_move</a></td></tr>
+<tr class="memitem:ada8d2e2a53ff345a9a8605ee1177acbb" id="r_ada8d2e2a53ff345a9a8605ee1177acbb"><td class="memItemLeft"><a class="el" href="node_8h.html#af24f0084f067007272f10dc8a23a9fd7">yuime_key_press_callback_t</a>&#160;</td><td class="memItemRight"><a class="el" href="#ada8d2e2a53ff345a9a8605ee1177acbb">on_key_press</a></td></tr>
+<tr class="memitem:a0a3dd3b4c31cde3b67730edb6327a6ce" id="r_a0a3dd3b4c31cde3b67730edb6327a6ce"><td class="memItemLeft"><a class="el" href="node_8h.html#a720db72209ecf9aebd3fb3f0adff74a6">yuime_key_release_callback_t</a>&#160;</td><td class="memItemRight"><a class="el" href="#a0a3dd3b4c31cde3b67730edb6327a6ce">on_key_release</a></td></tr>
+<tr class="memitem:a359b9fa1c0b7333327b022f6fc74680b" id="r_a359b9fa1c0b7333327b022f6fc74680b"><td class="memItemLeft"><a class="el" href="node_8h.html#a7718b7bf8578a1f04dd1577d992fbaf1">yuime_update_callback_t</a>&#160;</td><td class="memItemRight"><a class="el" href="#a359b9fa1c0b7333327b022f6fc74680b">update</a></td></tr>
+</table>
+<a name="doc-variable-members" id="doc-variable-members"></a><h2 id="header-doc-variable-members" class="groupheader">Member Data Documentation</h2>
+<a id="a6d007e47a31306041f9f9fd8518dff2a" name="a6d007e47a31306041f9f9fd8518dff2a"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a6d007e47a31306041f9f9fd8518dff2a">&#9670;&#160;</a></span>first_child</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">struct <a class="el" href="structyuime__node__s.html">yuime_node_s</a>* yuime_node_s::first_child</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a2ebc8e21e2ffd9e0c3729e39192689c0" name="a2ebc8e21e2ffd9e0c3729e39192689c0"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a2ebc8e21e2ffd9e0c3729e39192689c0">&#9670;&#160;</a></span>geometry</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="geometry_8h.html#a1bd5411da95ff1bd8b66f4707f80eaaf">yuime_geometry_t</a>* yuime_node_s::geometry</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="aa6886fad23a2e5e97d8bf72820bc3985" name="aa6886fad23a2e5e97d8bf72820bc3985"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aa6886fad23a2e5e97d8bf72820bc3985">&#9670;&#160;</a></span>max_size</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="dimension2_8h.html#aed0fd61bd07a336ba1cd1782265e15ed">yuime_dim2_t</a>* yuime_node_s::max_size</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="ac6fecc2dc9c2b80ac06b44d562a8f0c4" name="ac6fecc2dc9c2b80ac06b44d562a8f0c4"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ac6fecc2dc9c2b80ac06b44d562a8f0c4">&#9670;&#160;</a></span>min_size</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="dimension2_8h.html#aed0fd61bd07a336ba1cd1782265e15ed">yuime_dim2_t</a>* yuime_node_s::min_size</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="aa783470ea5a3e663e81d18277711a235" name="aa783470ea5a3e663e81d18277711a235"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aa783470ea5a3e663e81d18277711a235">&#9670;&#160;</a></span>next</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">struct <a class="el" href="structyuime__node__s.html">yuime_node_s</a>* yuime_node_s::next</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a0973ee1724ea66b2264a085a80dc4dd0" name="a0973ee1724ea66b2264a085a80dc4dd0"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a0973ee1724ea66b2264a085a80dc4dd0">&#9670;&#160;</a></span>on_focus</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="node_8h.html#a027984f090224c2dcecabdf5344f662a">yuime_focus_callback_t</a> yuime_node_s::on_focus</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a90be51ae0187d5dfc8bcb3b18f547f68" name="a90be51ae0187d5dfc8bcb3b18f547f68"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a90be51ae0187d5dfc8bcb3b18f547f68">&#9670;&#160;</a></span>on_hover</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="node_8h.html#a8956dc62aeb4c3192dd06ba7e5262304">yuime_hover_callback_t</a> yuime_node_s::on_hover</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="ada8d2e2a53ff345a9a8605ee1177acbb" name="ada8d2e2a53ff345a9a8605ee1177acbb"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ada8d2e2a53ff345a9a8605ee1177acbb">&#9670;&#160;</a></span>on_key_press</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="node_8h.html#af24f0084f067007272f10dc8a23a9fd7">yuime_key_press_callback_t</a> yuime_node_s::on_key_press</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a0a3dd3b4c31cde3b67730edb6327a6ce" name="a0a3dd3b4c31cde3b67730edb6327a6ce"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a0a3dd3b4c31cde3b67730edb6327a6ce">&#9670;&#160;</a></span>on_key_release</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="node_8h.html#a720db72209ecf9aebd3fb3f0adff74a6">yuime_key_release_callback_t</a> yuime_node_s::on_key_release</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="ad360226b0fe91cd52c39f3222f51b056" name="ad360226b0fe91cd52c39f3222f51b056"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ad360226b0fe91cd52c39f3222f51b056">&#9670;&#160;</a></span>on_mouse_button_press</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="node_8h.html#ae4409074071942e6bae3fd04fc428747">yuime_mouse_button_press_callback_t</a> yuime_node_s::on_mouse_button_press</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a7ea5efe88830daaf9275367d303a3db4" name="a7ea5efe88830daaf9275367d303a3db4"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a7ea5efe88830daaf9275367d303a3db4">&#9670;&#160;</a></span>on_mouse_button_release</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="node_8h.html#ac1e24dff0f9f4700e97f129376ac51f5">yuime_mouse_button_release_callback_t</a> yuime_node_s::on_mouse_button_release</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a28bc2a236415ecf4d538c16e2576e955" name="a28bc2a236415ecf4d538c16e2576e955"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a28bc2a236415ecf4d538c16e2576e955">&#9670;&#160;</a></span>on_mouse_move</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="node_8h.html#ad07cee194192b3f44dd130b615b7ecde">yuime_mouse_move_callback_t</a> yuime_node_s::on_mouse_move</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a117f55af1bae54d4dd23e4254331e8af" name="a117f55af1bae54d4dd23e4254331e8af"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a117f55af1bae54d4dd23e4254331e8af">&#9670;&#160;</a></span>on_mouse_wheel</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="node_8h.html#a6550aba2c9bd97869342a4fab1f4b138">yuime_mouse_wheel_callback_t</a> yuime_node_s::on_mouse_wheel</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a27929350eacaa7f6c64e688e65e6cfc0" name="a27929350eacaa7f6c64e688e65e6cfc0"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a27929350eacaa7f6c64e688e65e6cfc0">&#9670;&#160;</a></span>on_move</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="node_8h.html#ab835e2b31adc36622ae42e46e112dc24">yuime_move_callback_t</a> yuime_node_s::on_move</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a1ee104666c5b802f73b0e249af221dd7" name="a1ee104666c5b802f73b0e249af221dd7"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a1ee104666c5b802f73b0e249af221dd7">&#9670;&#160;</a></span>on_resize</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="node_8h.html#ad290ed128df2073a9d3164f15041bbb9">yuime_resize_callback_t</a> yuime_node_s::on_resize</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a4c90cd466f4f5f18496daa5578e2b80e" name="a4c90cd466f4f5f18496daa5578e2b80e"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a4c90cd466f4f5f18496daa5578e2b80e">&#9670;&#160;</a></span>on_unfocus</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="node_8h.html#ae6c4f7b223c6bb32e9e4e3d39c5a5b41">yuime_unfocus_callback_t</a> yuime_node_s::on_unfocus</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="aae186e2765791b52311bed466960158a" name="aae186e2765791b52311bed466960158a"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aae186e2765791b52311bed466960158a">&#9670;&#160;</a></span>on_unhover</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="node_8h.html#a5ae4865665fb9ca61be974cef214356d">yuime_unhover_callback_t</a> yuime_node_s::on_unhover</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a4d69dd356faeac0df94d99e2756b4933" name="a4d69dd356faeac0df94d99e2756b4933"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a4d69dd356faeac0df94d99e2756b4933">&#9670;&#160;</a></span>on_window_resize</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="node_8h.html#af744543069867b711abe966ecc176d03">yuime_window_resize_callback_t</a> yuime_node_s::on_window_resize</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a14dad4e46eb0a54ba498e6ea10f61fd4" name="a14dad4e46eb0a54ba498e6ea10f61fd4"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a14dad4e46eb0a54ba498e6ea10f61fd4">&#9670;&#160;</a></span>parent</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">struct <a class="el" href="structyuime__node__s.html">yuime_node_s</a>* yuime_node_s::parent</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a340823ea18d4fc2cef902f0e4507796f" name="a340823ea18d4fc2cef902f0e4507796f"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a340823ea18d4fc2cef902f0e4507796f">&#9670;&#160;</a></span>rect</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="rect_8h.html#ac2f9152e4168b9e48d0b3711f38175db">yuime_rect_t</a>* yuime_node_s::rect</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a359b9fa1c0b7333327b022f6fc74680b" name="a359b9fa1c0b7333327b022f6fc74680b"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a359b9fa1c0b7333327b022f6fc74680b">&#9670;&#160;</a></span>update</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="node_8h.html#a7718b7bf8578a1f04dd1577d992fbaf1">yuime_update_callback_t</a> yuime_node_s::update</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a3efde65f997e1cedb65a8c572e69021e" name="a3efde65f997e1cedb65a8c572e69021e"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a3efde65f997e1cedb65a8c572e69021e">&#9670;&#160;</a></span>widget</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="widget_8h.html#aa0509b6a82eb18b0bd22fead7e295ed1">yuime_widget_t</a> yuime_node_s::widget</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+</div><!-- contents -->
+</div><!-- doc-content -->
+<div id="page-nav" class="page-nav-panel">
+<div id="page-nav-resize-handle"></div>
+<div id="page-nav-tree">
+<div id="page-nav-contents">
+</div><!-- page-nav-contents -->
+</div><!-- page-nav-tree -->
+</div><!-- page-nav -->
+</div><!-- container -->
+<!-- start footer part -->
+<div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
+  <ul>
+    <li class="navelem"><a href="structyuime__node__s.html">yuime_node_s</a></li>
+    <li class="footer">Generated by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.16.1 </li>
+  </ul>
+</div>
+</body>
+</html>

@@ -214,8 +214,8 @@ void sdl_render_commands(yuime_context_t *ctx) {
 
 			SDL_SetRenderDrawColor(renderer, config->background_color->r, config->background_color->g, config->background_color->b, config->background_color->a);
 
-			if (config->border_radius->top_left > 0) {
-				SDL_Clay_RenderFillRoundedRect(ctx, rect, config->border_radius->top_left, *config->background_color);
+			if (config->border_radius->top_left_radius > 0) {
+				SDL_Clay_RenderFillRoundedRect(ctx, rect, config->border_radius->top_left_radius, *config->background_color);
 			} else {
 				SDL_RenderFillRect(renderer, &rect);
 			}
@@ -240,68 +240,73 @@ void sdl_render_commands(yuime_context_t *ctx) {
 			};
 
 			const float minRadius = SDL_min(rect.w, rect.h) / 2.0f;
-			const yuime_style_border_radius_t clampedRadii = {
-				.top_left = SDL_min(config->radius->top_left, minRadius),
-				.top_right = SDL_min(config->radius->top_right, minRadius),
-				.bottom_left = SDL_min(config->radius->bottom_left, minRadius),
-				.bottom_right = SDL_min(config->radius->bottom_right, minRadius)
+			const yuime_style_border_corners_t clampedRadii = {
+				.top_left_radius = SDL_min(config->corners->top_left_radius, minRadius),
+				.top_right_radius = SDL_min(config->corners->top_right_radius, minRadius),
+				.bottom_left_radius = SDL_min(config->corners->bottom_left_radius, minRadius),
+				.bottom_right_radius = SDL_min(config->corners->bottom_right_radius, minRadius),
+				.color = config->corners->color
 			};
-			//edges
-			SDL_SetRenderDrawColor(renderer, config->left.color.r, config->color.g, config->color.b, config->color.a);
-			if (config->width.left > 0) {
-				const float starting_y = rect.y + clampedRadii.topLeft;
-				const float length = rect.h - clampedRadii.topLeft - clampedRadii.bottomLeft;
-				SDL_FRect line = { rect.x - 1, starting_y, config->width.left, length };
+
+			// Edges
+			if (config->left->size > 0) {
+				const float starting_y = rect.y + clampedRadii.top_left_radius;
+				const float length = rect.h - clampedRadii.top_left_radius - clampedRadii.bottom_left_radius;
+				SDL_FRect line = { rect.x - 1, starting_y, config->left->size, length };
+				SDL_SetRenderDrawColor(renderer, config->left->color.r, config->left->color.g, config->left->color.b, config->left->color.a);
 				SDL_RenderFillRect(renderer, &line);
 			}
-			SDL_SetRenderDrawColor(renderer, config->left.color.r, config->color.g, config->color.b, config->color.a);
-			if (config->width.right > 0) {
-				const float starting_x = rect.x + rect.w - (float)config->width.right + 1;
-				const float starting_y = rect.y + clampedRadii.topRight;
-				const float length = rect.h - clampedRadii.topRight - clampedRadii.bottomRight;
-				SDL_FRect line = { starting_x, starting_y, config->width.right, length };
+
+			if (config->right->size > 0) {
+				const float starting_x = rect.x + rect.w - (float)config->right->size + 1;
+				const float starting_y = rect.y + clampedRadii.top_right_radius;
+				const float length = rect.h - clampedRadii.top_right_radius - clampedRadii.bottom_right_radius;
+				SDL_FRect line = { starting_x, starting_y, config->right->size, length };
+				SDL_SetRenderDrawColor(renderer, config->right->color.r, config->right->color.g, config->right->color.b, config->right->color.a);
 				SDL_RenderFillRect(renderer, &line);
 			}
-			SDL_SetRenderDrawColor(renderer, config->left.color.r, config->color.g, config->color.b, config->color.a);
-			if (config->width.top > 0) {
-				const float starting_x = rect.x + clampedRadii.topLeft;
-				const float length = rect.w - clampedRadii.topLeft - clampedRadii.topRight;
-				SDL_FRect line = { starting_x, rect.y - 1, length, config->width.top };
+
+			if (config->top->size > 0) {
+				const float starting_x = rect.x + clampedRadii.top_left_radius;
+				const float length = rect.w - clampedRadii.top_left_radius - clampedRadii.top_right_radius;
+				SDL_FRect line = { starting_x, rect.y - 1, length, config->top->size };
+				SDL_SetRenderDrawColor(renderer, config->top->color.r, config->top->color.g, config->top->color.b, config->top->color.a);
 				SDL_RenderFillRect(renderer, &line);
 			}
-			SDL_SetRenderDrawColor(renderer, config->left.color.r, config->color.g, config->color.b, config->color.a);
-			if (config->width.bottom > 0) {
-				const float starting_x = rect.x + clampedRadii.bottomLeft;
-				const float starting_y = rect.y + rect.h - (float)config->width.bottom + 1;
-				const float length = rect.w - clampedRadii.bottomLeft - clampedRadii.bottomRight;
-				SDL_FRect line = { starting_x, starting_y, length, config->width.bottom };
-				SDL_SetRenderDrawColor(renderer, config->color.r, config->color.g, config->color.b, config->color.a);
+
+			if (config->bottom->size > 0) {
+				const float starting_x = rect.x + clampedRadii.bottom_left_radius;
+				const float starting_y = rect.y + rect.h - (float)config->bottom->size + 1;
+				const float length = rect.w - clampedRadii.bottom_left_radius - clampedRadii.bottom_right_radius;
+				SDL_FRect line = { starting_x, starting_y, length, config->bottom->size };
+				SDL_SetRenderDrawColor(renderer, config->bottom->color.r, config->bottom->color.g, config->bottom->color.b, config->bottom->color.a);
 				SDL_RenderFillRect(renderer, &line);
 			}
-			//corners
-			if (config->radius->top_left > 0) {
-				const float centerX = rect.x + clampedRadii.top_left -1;
-				const float centerY = rect.y + clampedRadii.top_left - 1;
-				SDL_Clay_RenderArc(ctx, (SDL_FPoint){centerX, centerY}, clampedRadii.top_left,
-					180.0f, 270.0f, config->width.top, config->color);
+
+			// Corners
+			if (config->corners->top_left_radius > 0) {
+				const float centerX = rect.x + clampedRadii.top_left_radius -1;
+				const float centerY = rect.y + clampedRadii.top_left_radius - 1;
+				SDL_Clay_RenderArc(ctx, (SDL_FPoint){centerX, centerY}, clampedRadii.top_left_radius,
+					180.0f, 270.0f, config->top->size, config->corners->color);
 			}
-			if (config->radius->top_right > 0) {
-				const float centerX = rect.x + rect.w - clampedRadii.top_right;
-				const float centerY = rect.y + clampedRadii.topRight - 1;
-				SDL_Clay_RenderArc(ctx, (SDL_FPoint){centerX, centerY}, clampedRadii.top_right,
-					270.0f, 360.0f, config->width.top, config->color);
+			if (config->corners->top_right_radius > 0) {
+				const float centerX = rect.x + rect.w - clampedRadii.top_right_radius;
+				const float centerY = rect.y + clampedRadii.top_right_radius - 1;
+				SDL_Clay_RenderArc(ctx, (SDL_FPoint){centerX, centerY}, clampedRadii.top_right_radius,
+					270.0f, 360.0f, config->top->size, config->corners->color);
 			}
-			if (config->radius->bottom_left > 0) {
-				const float centerX = rect.x + clampedRadii.bottomLeft -1;
-				const float centerY = rect.y + rect.h - clampedRadii.bottom_left;
-				SDL_Clay_RenderArc(ctx, (SDL_FPoint){centerX, centerY}, clampedRadii.bottom_left,
-					90.0f, 180.0f, config->width.bottom, config->color);
+			if (config->corners->bottom_left_radius > 0) {
+				const float centerX = rect.x + clampedRadii.bottom_left_radius -1;
+				const float centerY = rect.y + rect.h - clampedRadii.bottom_left_radius;
+				SDL_Clay_RenderArc(ctx, (SDL_FPoint){centerX, centerY}, clampedRadii.bottom_left_radius,
+					90.0f, 180.0f, config->bottom->size, config->corners->color);
 			}
-			if (config->radius->bottom_right > 0) {
-				const float centerX = rect.x + rect.w - clampedRadii.bottom_right;
-				const float centerY = rect.y + rect.h - clampedRadii.bottom_right;
-				SDL_Clay_RenderArc(ctx, (SDL_FPoint){centerX, centerY}, clampedRadii.bottom_right,
-					0.0f, 90.0f, config->width.bottom, config->color);
+			if (config->corners->bottom_right_radius > 0) {
+				const float centerX = rect.x + rect.w - clampedRadii.bottom_right_radius;
+				const float centerY = rect.y + rect.h - clampedRadii.bottom_right_radius;
+				SDL_Clay_RenderArc(ctx, (SDL_FPoint){centerX, centerY}, clampedRadii.bottom_right_radius,
+					0.0f, 90.0f, config->bottom->size, config->corners->color);
 			}
 
 		} break;

@@ -1,0 +1,349 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=9"/>
+<meta name="generator" content="Doxygen 1.16.1"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<!-- BEGIN opengraph metadata -->
+<meta property="og:title" content="Yuime" />
+<meta property="og:image" content="" />
+<meta property="og:description" content="cross-platform graphical user interface" />
+<meta property="og:url" content="https://github.com/SomniPop/Yuime" />
+<!-- END opengraph metadata -->
+<!-- BEGIN twitter metadata -->
+<meta name="twitter:image:src" content="" />
+<meta name="twitter:title" content="SomniPop" />
+<meta name="twitter:description" content="" />
+<!-- END twitter metadata -->
+<title>Yuime: C:/Users/lucca/Documents/Lucca/Projects/C/yuime/include/yuime/context.h File Reference</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<link rel="icon" type="image/svg+xml" href="logo.png"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<script type="text/javascript" src="doxygen-awesome-darkmode-toggle.js"></script>
+<script type="text/javascript" src="doxygen-awesome-fragment-copy-button.js"></script>
+<script type="text/javascript" src="doxygen-awesome-paragraph-link.js"></script>
+<script type="text/javascript" src="doxygen-awesome-interactive-toc.js"></script>
+<script type="text/javascript" src="doxygen-awesome-tabs.js"></script>
+<script type="text/javascript" src="toggle-alternative-theme.js"></script>
+<script type="text/javascript">
+    DoxygenAwesomeFragmentCopyButton.init()
+    DoxygenAwesomeDarkModeToggle.init()
+    DoxygenAwesomeParagraphLink.init()
+    DoxygenAwesomeInteractiveToc.init()
+    DoxygenAwesomeTabs.init()
+</script>
+<link href="navtree.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="navtreedata.js"></script>
+<script type="text/javascript" src="navtree.js"></script>
+<script type="text/javascript" src="cookie.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+<link href="doxygen-awesome.css" rel="stylesheet" type="text/css"/>
+<link href="custom.css" rel="stylesheet" type="text/css"/>
+<link href="doxygen-awesome-sidebar-only.css" rel="stylesheet" type="text/css"/>
+<link href="doxygen-awesome-sidebar-only-darkmode-toggle.css" rel="stylesheet" type="text/css"/>
+<link href="custom-alternative.css" rel="stylesheet" type="text/css"/>
+</head>
+<body>
+<!-- https://tholman.com/-corners/ -->
+<a href="https://github.com/SomniPop/Yuime" class="github-corner" title="View source on GitHub" target="_blank" rel="noopener noreferrer">
+    <svg viewBox="0 0 250 250" width="40" height="40" style="position: absolute; top: 0; border: 0; right: 0; z-index: 99;" aria-hidden="true">
+    <path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"></path><path d="M128.3,109.0 C113.8,99.7 119.0,89.6 119.0,89.6 C122.0,82.7 120.5,78.6 120.5,78.6 C119.2,72.0 123.4,76.3 123.4,76.3 C127.3,80.9 125.5,87.3 125.5,87.3 C122.9,97.6 130.6,101.9 134.4,103.2" fill="currentColor" style="transform-origin: 130px 106px;" class="octo-arm"></path><path d="M115.0,115.0 C114.9,115.1 118.7,116.5 119.8,115.4 L133.7,101.6 C136.9,99.2 139.9,98.4 142.2,98.6 C133.8,88.0 127.5,74.4 143.8,58.0 C148.5,53.4 154.0,51.2 159.7,51.0 C160.3,49.4 163.2,43.6 171.4,40.1 C171.4,40.1 176.1,42.5 178.8,56.2 C183.1,58.6 187.2,61.8 190.9,65.4 C194.5,69.0 197.7,73.2 200.1,77.6 C213.8,80.2 216.3,84.9 216.3,84.9 C212.7,93.1 206.9,96.0 205.4,96.6 C205.1,102.4 203.0,107.8 198.3,112.5 C181.9,128.9 168.3,122.5 157.7,114.1 C157.9,116.9 156.7,120.9 152.7,124.9 L141.0,136.5 C139.8,137.7 141.6,141.9 141.8,141.8 Z" fill="currentColor" class="octo-body"></path></svg></a><style>.github-corner:hover .octo-arm{animation:octocat-wave 560ms ease-in-out}@keyframes octocat-wave{0%,100%{transform:rotate(0)}20%,60%{transform:rotate(-25deg)}40%,80%{transform:rotate(10deg)}}@media (max-width:500px){.github-corner:hover .octo-arm{animation:none}.github-corner .octo-arm{animation:octocat-wave 560ms ease-in-out}}</style>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr style="height: 56px;">
+  <td id="projectlogo"><img alt="Logo" src="logo.png"/></td>
+  <td id="projectalign" style="padding-left: 0.5em;">
+   <div id="projectname">Yuime
+   &#160;<span id="projectnumber">v0.0.1</span>
+   </div>
+   <div id="projectbrief">Yet another &quot;revolutionary&quot; graphical user interface library</div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- Generated by Doxygen 1.16.1 -->
+<script type="text/javascript">
+var searchBox = new SearchBox("searchBox", "search/",'.html');
+</script>
+<script type="text/javascript">
+$(function() { codefold.init(); });
+</script>
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+$(function() {
+  initMenu('',true,false,'search.php','Search',true);
+  $(function() { init_search(); });
+});
+</script>
+<div id="main-nav"></div>
+</div><!-- top -->
+<div id="side-nav" class="ui-resizable side-nav-resizable">
+  <div id="nav-tree">
+    <div id="nav-tree-contents">
+      <div id="nav-sync" class="sync"></div>
+    </div>
+  </div>
+  <div id="splitbar" style="-moz-user-select:none;" 
+       class="ui-resizable-handle">
+  </div>
+</div>
+<script type="text/javascript">
+$(function(){initNavTree('context_8h.html','',''); });
+</script>
+<div id="container">
+<div id="doc-content">
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<div id="MSearchResults">
+<div class="SRPage">
+<div id="SRIndex">
+<div id="SRResults"></div>
+<div class="SRStatus" id="Loading">Loading...</div>
+<div class="SRStatus" id="Searching">Searching...</div>
+<div class="SRStatus" id="NoMatches">No Matches</div>
+</div>
+</div>
+</div>
+</div>
+
+<div class="header">
+  <div class="headertitle"><div class="title">context.h File Reference</div></div>
+</div><!--header-->
+<div class="contents">
+<div class="textblock"><code>#include &lt;stdint.h&gt;</code><br />
+<code>#include &quot;<a class="el" href="alloc_8h_source.html">alloc.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="vector2_8h_source.html">math/vector2.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="node_8h_source.html">node.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="resize__region_8h_source.html">resize_region.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="render_8h_source.html">render/render.h</a>&quot;</code><br />
+</div><div class="textblock"><div class="dynheader">
+Include dependency graph for context.h:</div>
+<div class="dyncontent">
+<div class="center"><iframe scrolling="no" loading="lazy" frameborder="0" src="context_8h__incl.svg" width="1012" height="368"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
+</div>
+</div><div class="textblock"><div class="dynheader">
+This graph shows which files directly or indirectly include this file:</div>
+<div class="dyncontent">
+<div class="center"><iframe scrolling="no" loading="lazy" frameborder="0" src="context_8h__dep__incl.svg" width="686" height="283"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
+</div>
+</div>
+<p><a href="context_8h_source.html">Go to the source code of this file.</a></p>
+<table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 id="header-nested-classes" class="groupheader"><a id="nested-classes" name="nested-classes"></a>
+Classes</h2></td></tr>
+<tr class="memitem:yuime_5Fcontext_5Fs" id="r_yuime_5Fcontext_5Fs"><td class="memItemLeft">struct &#160;</td><td class="memItemRight"><a class="el" href="structyuime__context__s.html">yuime_context_s</a></td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 id="header-define-members" class="groupheader"><a id="define-members" name="define-members"></a>
+Macros</h2></td></tr>
+<tr class="memitem:aca6e30eb21e3ab70be0db6a5a38bffab" id="r_aca6e30eb21e3ab70be0db6a5a38bffab"><td class="memItemLeft">#define&#160;</td><td class="memItemRight"><a class="el" href="#aca6e30eb21e3ab70be0db6a5a38bffab">YUIME_CONTEXT_FLAG_SCROLLING_ANY</a>(flags)</td></tr>
+<tr class="memitem:afbbefc5988edd7624fd702928b923b9d" id="r_afbbefc5988edd7624fd702928b923b9d"><td class="memItemLeft">#define&#160;</td><td class="memItemRight"><a class="el" href="#afbbefc5988edd7624fd702928b923b9d">YUIME_CONTEXT_FLAG_SCROLLING_ALL</a>(flags)</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 id="header-typedef-members" class="groupheader"><a id="typedef-members" name="typedef-members"></a>
+Typedefs</h2></td></tr>
+<tr class="memitem:a417fe9a8355387c8873ba5234583c3a1" id="r_a417fe9a8355387c8873ba5234583c3a1"><td class="memItemLeft">typedef uint8_t&#160;</td><td class="memItemRight"><a class="el" href="#a417fe9a8355387c8873ba5234583c3a1">yuime_context_flag_t</a></td></tr>
+<tr class="memitem:aaa09694880312aab5964afac8543ac25" id="r_aaa09694880312aab5964afac8543ac25"><td class="memItemLeft">typedef struct <a class="el" href="structyuime__context__s.html">yuime_context_s</a>&#160;</td><td class="memItemRight"><a class="el" href="#aaa09694880312aab5964afac8543ac25">yuime_context_t</a></td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 id="header-enum-members" class="groupheader"><a id="enum-members" name="enum-members"></a>
+Enumerations</h2></td></tr>
+<tr class="memitem:afb2c4c42b713926e4d27b9a85ac95c80" id="r_afb2c4c42b713926e4d27b9a85ac95c80"><td class="memItemLeft">enum &#160;</td><td class="memItemRight"><a class="el" href="#afb2c4c42b713926e4d27b9a85ac95c80">yuime_context_flag_e</a> { <br />
+&#160;&#160;<a class="el" href="#afb2c4c42b713926e4d27b9a85ac95c80adf22202b530ec9c3ee28f7706347eba3">YUIME_CONTEXT_FLAG_NONE</a> = 0
+, <a class="el" href="#afb2c4c42b713926e4d27b9a85ac95c80acffcfcaf3775e08f99e78e2dec5c8fc5">YUIME_CONTEXT_FLAG_DRAGGING</a> = 1
+, <a class="el" href="#afb2c4c42b713926e4d27b9a85ac95c80a79ca23706073648c1ba5a9e389f2caea">YUIME_CONTEXT_FLAG_RESIZING</a> = 2
+, <a class="el" href="#afb2c4c42b713926e4d27b9a85ac95c80a3d2a3367b3c6d46b60073e708f207819">YUIME_CONTEXT_FLAG_SCROLLING_VERTICALLY</a> = 4
+, <br />
+&#160;&#160;<a class="el" href="#afb2c4c42b713926e4d27b9a85ac95c80a01b3b9862a33589c7d830ec7a0fe070d">YUIME_CONTEXT_FLAG_SCROLLING_HORIZONTALLY</a> = 8
+, <a class="el" href="#afb2c4c42b713926e4d27b9a85ac95c80a8dbd03faf8219f6adb55474383267c46">YUIME_CONTEXT_FLAG_DRAW_TEXT_CURSOR</a> = 16
+<br />
+ }</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 id="header-func-members" class="groupheader"><a id="func-members" name="func-members"></a>
+Functions</h2></td></tr>
+<tr class="memitem:a7539745b5be9674ee90a0ad51a18a905" id="r_a7539745b5be9674ee90a0ad51a18a905"><td class="memItemLeft">void&#160;</td><td class="memItemRight"><a class="el" href="#a7539745b5be9674ee90a0ad51a18a905">yuime_context_init</a> (<a class="el" href="#aaa09694880312aab5964afac8543ac25">yuime_context_t</a> *ctx, <a class="el" href="command_8h.html#a5e0265b2148ec620bdcd39c5949f0200">yuime_render_commands_function_t</a> render_commands_func, const <a class="el" href="vector2_8h.html#a830c68d946928cdb62d1eb816e0bb5f7">yuime_vector2_t</a> screen_size, <a class="el" href="alloc_8h.html#a67b0ef20a4defab1f65b37040ed96d0b">yuime_mem_functions_t</a> mem_functions)</td></tr>
+<tr class="memdesc:a7539745b5be9674ee90a0ad51a18a905"><td class="mdescLeft">&#160;</td><td class="mdescRight">Sets default values for the given context.  <br /></td></tr>
+<tr class="memitem:a23a6ec20f349db1694f8558f2a209976" id="r_a23a6ec20f349db1694f8558f2a209976"><td class="memItemLeft">void&#160;</td><td class="memItemRight"><a class="el" href="#a23a6ec20f349db1694f8558f2a209976">yuime_context_cleanup</a> (<a class="el" href="#aaa09694880312aab5964afac8543ac25">yuime_context_t</a> *ctx)</td></tr>
+</table>
+<a name="doc-define-members" id="doc-define-members"></a><h2 id="header-doc-define-members" class="groupheader">Macro Definition Documentation</h2>
+<a id="afbbefc5988edd7624fd702928b923b9d" name="afbbefc5988edd7624fd702928b923b9d"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#afbbefc5988edd7624fd702928b923b9d">&#9670;&#160;</a></span>YUIME_CONTEXT_FLAG_SCROLLING_ALL</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define YUIME_CONTEXT_FLAG_SCROLLING_ALL</td>
+          <td>(</td>
+          <td class="paramtype"></td>          <td class="paramname"><span class="paramname"><em>flags</em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<b>Value:</b><div class="fragment"><div class="line">((flags &amp; <a class="code hl_enumvalue" href="#afb2c4c42b713926e4d27b9a85ac95c80a3d2a3367b3c6d46b60073e708f207819">YUIME_CONTEXT_FLAG_SCROLLING_VERTICALLY</a>) &amp; (flag &amp; <a class="code hl_enumvalue" href="#afb2c4c42b713926e4d27b9a85ac95c80a01b3b9862a33589c7d830ec7a0fe070d">YUIME_CONTEXT_FLAG_SCROLLING_HORIZONTALLY</a>))</div>
+<div class="ttc" id="acontext_8h_html_afb2c4c42b713926e4d27b9a85ac95c80a01b3b9862a33589c7d830ec7a0fe070d"><div class="ttname"><a href="#afb2c4c42b713926e4d27b9a85ac95c80a01b3b9862a33589c7d830ec7a0fe070d">YUIME_CONTEXT_FLAG_SCROLLING_HORIZONTALLY</a></div><div class="ttdeci">@ YUIME_CONTEXT_FLAG_SCROLLING_HORIZONTALLY</div><div class="ttdef"><b>Definition</b> context.h:18</div></div>
+<div class="ttc" id="acontext_8h_html_afb2c4c42b713926e4d27b9a85ac95c80a3d2a3367b3c6d46b60073e708f207819"><div class="ttname"><a href="#afb2c4c42b713926e4d27b9a85ac95c80a3d2a3367b3c6d46b60073e708f207819">YUIME_CONTEXT_FLAG_SCROLLING_VERTICALLY</a></div><div class="ttdeci">@ YUIME_CONTEXT_FLAG_SCROLLING_VERTICALLY</div><div class="ttdef"><b>Definition</b> context.h:17</div></div>
+</div><!-- fragment -->
+</div>
+</div>
+<a id="aca6e30eb21e3ab70be0db6a5a38bffab" name="aca6e30eb21e3ab70be0db6a5a38bffab"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aca6e30eb21e3ab70be0db6a5a38bffab">&#9670;&#160;</a></span>YUIME_CONTEXT_FLAG_SCROLLING_ANY</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define YUIME_CONTEXT_FLAG_SCROLLING_ANY</td>
+          <td>(</td>
+          <td class="paramtype"></td>          <td class="paramname"><span class="paramname"><em>flags</em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<b>Value:</b><div class="fragment"><div class="line">((flags &amp; <a class="code hl_enumvalue" href="#afb2c4c42b713926e4d27b9a85ac95c80a3d2a3367b3c6d46b60073e708f207819">YUIME_CONTEXT_FLAG_SCROLLING_VERTICALLY</a>) | (flag &amp; <a class="code hl_enumvalue" href="#afb2c4c42b713926e4d27b9a85ac95c80a01b3b9862a33589c7d830ec7a0fe070d">YUIME_CONTEXT_FLAG_SCROLLING_HORIZONTALLY</a>))</div>
+</div><!-- fragment -->
+</div>
+</div>
+<a name="doc-typedef-members" id="doc-typedef-members"></a><h2 id="header-doc-typedef-members" class="groupheader">Typedef Documentation</h2>
+<a id="a417fe9a8355387c8873ba5234583c3a1" name="a417fe9a8355387c8873ba5234583c3a1"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a417fe9a8355387c8873ba5234583c3a1">&#9670;&#160;</a></span>yuime_context_flag_t</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">typedef uint8_t <a class="el" href="#a417fe9a8355387c8873ba5234583c3a1">yuime_context_flag_t</a></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="aaa09694880312aab5964afac8543ac25" name="aaa09694880312aab5964afac8543ac25"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aaa09694880312aab5964afac8543ac25">&#9670;&#160;</a></span>yuime_context_t</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">typedef struct <a class="el" href="structyuime__context__s.html">yuime_context_s</a> <a class="el" href="#aaa09694880312aab5964afac8543ac25">yuime_context_t</a></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a name="doc-enum-members" id="doc-enum-members"></a><h2 id="header-doc-enum-members" class="groupheader">Enumeration Type Documentation</h2>
+<a id="afb2c4c42b713926e4d27b9a85ac95c80" name="afb2c4c42b713926e4d27b9a85ac95c80"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#afb2c4c42b713926e4d27b9a85ac95c80">&#9670;&#160;</a></span>yuime_context_flag_e</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">enum <a class="el" href="#afb2c4c42b713926e4d27b9a85ac95c80">yuime_context_flag_e</a></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<table class="fieldtable">
+<tr><th colspan="3">Enumerator</th></tr><tr><td class="fieldname"><a id="afb2c4c42b713926e4d27b9a85ac95c80adf22202b530ec9c3ee28f7706347eba3" name="afb2c4c42b713926e4d27b9a85ac95c80adf22202b530ec9c3ee28f7706347eba3"></a>YUIME_CONTEXT_FLAG_NONE&#160;</td><td class="fieldinit">0&#160;</td><td class="fielddoc"></td></tr>
+<tr><td class="fieldname"><a id="afb2c4c42b713926e4d27b9a85ac95c80acffcfcaf3775e08f99e78e2dec5c8fc5" name="afb2c4c42b713926e4d27b9a85ac95c80acffcfcaf3775e08f99e78e2dec5c8fc5"></a>YUIME_CONTEXT_FLAG_DRAGGING&#160;</td><td class="fieldinit">1&#160;</td><td class="fielddoc"></td></tr>
+<tr><td class="fieldname"><a id="afb2c4c42b713926e4d27b9a85ac95c80a79ca23706073648c1ba5a9e389f2caea" name="afb2c4c42b713926e4d27b9a85ac95c80a79ca23706073648c1ba5a9e389f2caea"></a>YUIME_CONTEXT_FLAG_RESIZING&#160;</td><td class="fieldinit">2&#160;</td><td class="fielddoc"></td></tr>
+<tr><td class="fieldname"><a id="afb2c4c42b713926e4d27b9a85ac95c80a3d2a3367b3c6d46b60073e708f207819" name="afb2c4c42b713926e4d27b9a85ac95c80a3d2a3367b3c6d46b60073e708f207819"></a>YUIME_CONTEXT_FLAG_SCROLLING_VERTICALLY&#160;</td><td class="fieldinit">4&#160;</td><td class="fielddoc"></td></tr>
+<tr><td class="fieldname"><a id="afb2c4c42b713926e4d27b9a85ac95c80a01b3b9862a33589c7d830ec7a0fe070d" name="afb2c4c42b713926e4d27b9a85ac95c80a01b3b9862a33589c7d830ec7a0fe070d"></a>YUIME_CONTEXT_FLAG_SCROLLING_HORIZONTALLY&#160;</td><td class="fieldinit">8&#160;</td><td class="fielddoc"></td></tr>
+<tr><td class="fieldname"><a id="afb2c4c42b713926e4d27b9a85ac95c80a8dbd03faf8219f6adb55474383267c46" name="afb2c4c42b713926e4d27b9a85ac95c80a8dbd03faf8219f6adb55474383267c46"></a>YUIME_CONTEXT_FLAG_DRAW_TEXT_CURSOR&#160;</td><td class="fieldinit">16&#160;</td><td class="fielddoc"></td></tr>
+</table>
+
+</div>
+</div>
+<a name="doc-func-members" id="doc-func-members"></a><h2 id="header-doc-func-members" class="groupheader">Function Documentation</h2>
+<a id="a23a6ec20f349db1694f8558f2a209976" name="a23a6ec20f349db1694f8558f2a209976"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a23a6ec20f349db1694f8558f2a209976">&#9670;&#160;</a></span>yuime_context_cleanup()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void yuime_context_cleanup </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="#aaa09694880312aab5964afac8543ac25">yuime_context_t</a> *</td>          <td class="paramname"><span class="paramname"><em>ctx</em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a7539745b5be9674ee90a0ad51a18a905" name="a7539745b5be9674ee90a0ad51a18a905"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a7539745b5be9674ee90a0ad51a18a905">&#9670;&#160;</a></span>yuime_context_init()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void yuime_context_init </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="#aaa09694880312aab5964afac8543ac25">yuime_context_t</a> *</td>          <td class="paramname"><span class="paramname"><em>ctx</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="command_8h.html#a5e0265b2148ec620bdcd39c5949f0200">yuime_render_commands_function_t</a></td>          <td class="paramname"><span class="paramname"><em>render_commands_func</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const <a class="el" href="vector2_8h.html#a830c68d946928cdb62d1eb816e0bb5f7">yuime_vector2_t</a></td>          <td class="paramname"><span class="paramname"><em>screen_size</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="alloc_8h.html#a67b0ef20a4defab1f65b37040ed96d0b">yuime_mem_functions_t</a></td>          <td class="paramname"><span class="paramname"><em>mem_functions</em></span>&#160;)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Sets default values for the given context. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">ctx</td><td>Context to initialize. </td></tr>
+    <tr><td class="paramname">mem_functions</td><td>Memory functions related to memory allocation and deallocation. </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+</div><!-- contents -->
+</div><!-- doc-content -->
+<div id="page-nav" class="page-nav-panel">
+<div id="page-nav-resize-handle"></div>
+<div id="page-nav-tree">
+<div id="page-nav-contents">
+</div><!-- page-nav-contents -->
+</div><!-- page-nav-tree -->
+</div><!-- page-nav -->
+</div><!-- container -->
+<!-- start footer part -->
+<div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
+  <ul>
+    <li class="navelem"><a href="dir_d44c64559bbebec7f509842c48db8b23.html">include</a></li><li class="navelem"><a href="dir_d92f23b6be4df92eb6c75eb2d7c816ed.html">yuime</a></li><li class="navelem"><a href="context_8h.html">context.h</a></li>
+    <li class="footer">Generated by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.16.1 </li>
+  </ul>
+</div>
+</body>
+</html>
