@@ -85,6 +85,9 @@ int main() {
 			&panel_dim // SIZE
 	));
 
+	// WE ARE NOT DOING A STYLE SYSTEM. This library is
+	// supposed to be simple but powerful. If you wish
+	// to use a style handler make your own.
 	yuime_widget_panel_style_t panel_style = {0};
 	panel_style.border.color = YUIME_COLOR(0,0,0,255);
 	panel_style.border.size = 2.0f;
