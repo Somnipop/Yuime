@@ -15,6 +15,16 @@ typedef struct yuime_geometry_s {
 	yuime_dim2_t* size; ///< Pointer to size. Why? Because size could be shared with other geometries.
 } yuime_geometry_t;
 
+#define YUIME_GEOMETRY(pivot_x, pivot_y, position_scale_x, position_offset_x, position_scale_y, position_offset_y, size_dim2_ptr) \
+	(yuime_geometry_t){ \
+		.pivot = YUIME_VEC2(pivot_x, pivot_y), \
+		.position = YUIME_DIM2( \
+			position_scale_x, position_offset_x, \
+			position_scale_y, position_offset_y \
+		), \
+		.size = size_dim2_ptr \
+	}
+
 inline void yuime_geometry_calculate_rect(const yuime_geometry_t *geometry, const yuime_rect_t *parent_rect, yuime_rect_t *rect) {
 	rect->w = yuime_dim2_calculate_size(parent_rect->w, geometry->size->scale.x, geometry->size->offset.x);
 	rect->h = yuime_dim2_calculate_size(parent_rect->h, geometry->size->scale.y, geometry->size->offset.y);

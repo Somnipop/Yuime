@@ -31,6 +31,12 @@ typedef struct yuime_widget_panel_s {
 	yuime_rect_t rect;
 } yuime_widget_panel_t;
 
+#define YUIME_WIDGET_PANEL(ctx_ptr, var, parent_ptr_or_null, _geometry) \
+	{ \
+		yuime_geometry_t __geometry = _geometry; \
+		var = yuime_widget_panel_new_node(ctx_ptr, parent_ptr_or_null, &__geometry); \
+	}
+
 /**
  * @brief Creates a new widget.
  * 

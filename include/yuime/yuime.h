@@ -23,6 +23,5 @@
 #include "context.h"
 #include "resize_region.h"
 #include "events.h"
-#include "macros.h"
 
 // YUIME_API void yuime_update(yuime_context_t *ctx);

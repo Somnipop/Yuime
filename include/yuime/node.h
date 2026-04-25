@@ -130,6 +130,9 @@ typedef struct yuime_node_s {
 	yuime_update_callback_t update;
 } yuime_node_t;
 
+// Gets node's widget and converts it to its type 
+#define YUIME_NODE_WIDGET(widget_type, node) ((widget_type*)node->widget.widget)
+
 struct yuime_context_s;
 /**
  * @brief Creates a new node and inserts it in parent.
